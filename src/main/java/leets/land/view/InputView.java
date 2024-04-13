@@ -18,7 +18,7 @@ public class InputView {
     }
 
     public int checkNumberRange(int number) {
-        if (number < 1) {
+        if (number < 1 || number >100) {
             System.out.println("[ERROR] 범위 내의 숫자를 입력하세요. ");
             return readNumber();
         } else {
