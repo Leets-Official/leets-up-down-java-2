@@ -6,8 +6,8 @@ import leets.land.domain.GuessRange;
 public class Down implements Status {
 
     @Override
-    public void narrowRange(GuessRange guessRange, GuessNumber guessNumber) {
-        guessRange.downMax(guessNumber);
+    public GuessRange narrowRange(GuessRange guessRange, GuessNumber guessNumber) {
+        return guessRange.downMax(guessNumber);
     }
 
     @Override

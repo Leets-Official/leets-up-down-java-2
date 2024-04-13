@@ -12,11 +12,9 @@ public enum GuessStatus {
     CORRECT(new Correct());
 
     private final Status status;
-    private final GuessRange guessRange;
 
     GuessStatus(Status status) {
         this.status = status;
-        this.guessRange = new GuessRange();
     }
 
     public static GuessStatus match(int gap) {
@@ -26,15 +24,11 @@ public enum GuessStatus {
                 .orElseThrow();
     }
 
-    public void narrowRange(GuessNumber guessNumber) {
-        status.narrowRange(guessRange, guessNumber);
+    public GuessRange narrowRange(GuessNumber guessNumber, GuessRange guessRange) {
+        return status.narrowRange(guessRange, guessNumber);
     }
 
     public boolean isContinue() {
         return status.isContinue();
-    }
-
-    public GuessRange guessRange() {
-        return guessRange;
     }
 }

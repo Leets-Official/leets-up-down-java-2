@@ -6,9 +6,9 @@ import leets.land.domain.GuessRange;
 public class Correct implements Status {
 
     @Override
-    public void narrowRange(GuessRange guessRange, GuessNumber guessNumber) {
-        guessRange.downMax(guessNumber);
-        guessRange.upMin(guessNumber);
+    public GuessRange narrowRange(GuessRange guessRange, GuessNumber guessNumber) {
+        GuessRange downMaxed = guessRange.downMax(guessNumber);
+        return downMaxed.upMin(guessNumber);
     }
 
     @Override

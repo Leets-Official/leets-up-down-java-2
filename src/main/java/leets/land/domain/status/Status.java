@@ -5,7 +5,7 @@ import leets.land.domain.GuessRange;
 
 public interface Status {
 
-    void narrowRange(GuessRange guessRange, GuessNumber guessNumber);
+    GuessRange narrowRange(GuessRange guessRange, GuessNumber guessNumber);
 
     boolean isValid(int gap);
 

@@ -15,18 +15,20 @@ public class GameMachine {
 
     public void run() {
         AnswerNumber answerNumber = new RandomNumberGenerator().generate();
+        GuessRange guessRange = new GuessRange();
         GuessNumber guessNumber = readFirstGuessNumber();
         GuessStatus guessStatus = play(answerNumber, guessNumber);
+        guessRange = guessStatus.narrowRange(guessNumber, guessRange);
         while (guessStatus.isContinue()) {
-            guessNumber = readGuessNumberInRange(guessStatus.guessRange());
+            guessNumber = readGuessNumberInRange(guessRange);
             guessStatus = play(answerNumber, guessNumber);
+            guessRange = guessStatus.narrowRange(guessNumber, guessRange);
         }
     }
 
     private GuessStatus play(AnswerNumber answerNumber, GuessNumber guessNumber) {
         GuessStatus guessStatus = answerNumber.compare(guessNumber);
         outputView.printGuessStatus(guessStatus);
-        guessStatus.narrowRange(guessNumber);
         return guessStatus;
     }
 
@@ -44,7 +46,7 @@ public class GameMachine {
             int guessNumber = inputView.readGuessNumberInRange(guessRange.min(), guessRange.max());
             return new GuessNumber(guessNumber);
         } catch (IllegalArgumentException e) {
-            return readFirstGuessNumber();
+            return readGuessNumberInRange(guessRange);
         }
     }
 }
