@@ -8,6 +8,7 @@ import java.util.Random;
 public class Controller {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+    private final UpNumberVersion upNumberVersion = new UpNumberVersion();
     public void run() {
         int version = inputView.versionInput();
         if (version == 1) {
@@ -24,17 +25,10 @@ public class Controller {
         int correct = -1;
         while (correct != randomNumber) {
             correct = inputView.readNumber();
-            printUpDown(correct, randomNumber);
+            upNumberVersion.printUpDown(correct, randomNumber);
             cnt ++;
         }
         outputView.printCorrectMessage(cnt);
-    }
-    public void printUpDown(int number, int randomNumber) {
-        if (number < randomNumber) {
-            System.out.println("UP");
-        } else if(number > randomNumber) {
-            System.out.println("Down");
-        }
     }
 
     public void alphaVersion() {
