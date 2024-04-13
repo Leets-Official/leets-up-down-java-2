@@ -12,9 +12,29 @@ public class InputView {
     }
 
     public int readNumber() {
-        System.out.println("숫자를 입력해주세요(1 ~ 100) : ");
+        System.out.print("숫자를 입력해주세요(1 ~ 100) : ");
         String number = sc.next();
         return validateNumberType(number);
+    }
+
+    public String readString() {
+        System.out.print("영어를 입력해주세요(A ~ z) : ");
+        String alpha = sc.next();
+        return validateAlpha(alpha);
+    }
+
+    public String validateAlpha(String alpha) {
+        if (alpha.length() >= 2) {
+            System.out.println("[ERROR] 입력 문자의 길이는 1을 넘을 수 없습니다.");
+            return readString();
+        }
+        for (char c : alpha.toCharArray()) {
+            if (!Character.isAlphabetic(c)) {
+                System.out.println("[ERROR] 입력 문자의 타입이 맞지 않습니다.");
+                return readString();
+            }
+        }
+        return alpha;
     }
 
     public int validateNumberType(String number) {
@@ -25,4 +45,6 @@ public class InputView {
             return versionInput();
         }
     }
+
+
 }
