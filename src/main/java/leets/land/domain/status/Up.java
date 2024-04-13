@@ -9,4 +9,9 @@ public class Up implements Status {
     public Up(GuessNumber min) {
         this.min = min;
     }
+
+    @Override
+    public boolean isEnd() {
+        return false;
+    }
 }

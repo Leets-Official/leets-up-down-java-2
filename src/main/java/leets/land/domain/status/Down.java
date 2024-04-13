@@ -9,4 +9,9 @@ public class Down implements Status {
     public Down(GuessNumber max) {
         this.max = max;
     }
+
+    @Override
+    public boolean isEnd() {
+        return false;
+    }
 }
