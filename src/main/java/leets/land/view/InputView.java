@@ -4,12 +4,17 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private static final String GUESS_NUMBER_FORMAT = "숫자를 입력해주세요(%d ~ %d)";
+    private static final String GUESS_NUMBER_FORMAT = "숫자를 입력해주세요(%d ~ %d) : ";
 
     private final Scanner scanner = new Scanner(System.in);
 
     public int readGuessNumberInRange(int start, int end) {
-        System.out.println(String.format(GUESS_NUMBER_FORMAT, start, end));
-        return scanner.nextInt();
+        System.out.print(String.format(GUESS_NUMBER_FORMAT, start, end));
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 입력 문자의 타입이 맞지 않습니다.");
+            return readGuessNumberInRange(start, end);
+        }
     }
 }
