@@ -10,12 +10,6 @@ public class AnswerNumber {
 
     public GuessStatus compare(GuessNumber guessNumber) {
         int compared = guessNumber.compare(value);
-        if (compared > 0) {
-            return GuessStatus.UP;
-        }
-        if (compared < 0) {
-            return GuessStatus.DOWN;
-        }
-        return GuessStatus.CORRECT;
+        return GuessStatus.match(compared);
     }
 }
