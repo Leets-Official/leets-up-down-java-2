@@ -18,8 +18,7 @@ public class GameMachine {
     }
 
     private void play(UpDownGame upDownGame) {
-        GuessRange guessRange = upDownGame.guessRange();
-        GuessNumber guessNumber = readGuessNumberInRange(guessRange);
+        GuessNumber guessNumber = readGuessNumberInRange(upDownGame.guessRange());
         GuessStatus guessStatus = upDownGame.play(guessNumber);
         outputView.printGuessStatus(guessStatus);
         if (guessStatus.isContinue()) {
