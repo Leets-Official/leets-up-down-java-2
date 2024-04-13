@@ -41,6 +41,29 @@ public class InputView {
         return validateAlpha(alpha);
     }
 
+    public char readUpperAlpha() {
+        System.out.print("영어를 입력해주세요(A ~ Z) : ");
+        String alpha = sc.next();
+        char UpperAlpha = validateAlpha(alpha).charAt(0);
+        if(UpperAlpha < 'A' || validateAlpha(alpha).charAt(0) > 'Z'){
+            System.out.println("[ERROR]: 범위 내의 알파벳을 입력하세요.");
+            return readUpperAlpha();
+        }
+        return UpperAlpha;
+    }
+
+    public char readUpperAlpha(char c) {
+        char start = (char)(c + 1);
+        System.out.printf("영어를 입력해주세요(%c ~ Z) : ",start);
+        String alpha = sc.next();
+        char UpperAlpha = validateAlpha(alpha).charAt(0);
+        if(UpperAlpha < 'A' || validateAlpha(alpha).charAt(0) > 'Z'){
+            System.out.println("[ERROR]: 범위 내의 알파벳을 입력하세요.");
+            return readUpperAlpha();
+        }
+        return UpperAlpha;
+    }
+
     public String validateAlpha(String alpha) {
         if (alpha.length() >= 2) {
             System.out.println("[ERROR] 입력 문자의 길이는 1을 넘을 수 없습니다.");
