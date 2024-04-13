@@ -18,4 +18,8 @@ public class GuessNumber {
             throw new IllegalArgumentException(String.format(ERROR_FORMAT, "추측값의 범위는 1 이상 100 이하입니다"));
         }
     }
+
+    public int compare(int other) {
+        return other - value;
+    }
 }
