@@ -16,28 +16,16 @@ public class GameMachine {
     public void run() {
         AnswerNumber answerNumber = new RandomNumberGenerator().generate();
         GuessRange guessRange = new GuessRange();
-        GuessNumber guessNumber = readFirstGuessNumber();
-        GuessStatus guessStatus = play(answerNumber, guessNumber);
-        guessRange = guessStatus.narrowRange(guessNumber, guessRange);
-        while (guessStatus.isContinue()) {
-            guessNumber = readGuessNumberInRange(guessRange);
-            guessStatus = play(answerNumber, guessNumber);
-            guessRange = guessStatus.narrowRange(guessNumber, guessRange);
-        }
+        play(answerNumber, guessRange);
     }
 
-    private GuessStatus play(AnswerNumber answerNumber, GuessNumber guessNumber) {
+    private void play(AnswerNumber answerNumber, GuessRange guessRange) {
+        GuessNumber guessNumber = readGuessNumberInRange(guessRange);
         GuessStatus guessStatus = answerNumber.compare(guessNumber);
         outputView.printGuessStatus(guessStatus);
-        return guessStatus;
-    }
-
-    private GuessNumber readFirstGuessNumber() {
-        try {
-            int guessNumber = inputView.readFirstGuessNumber();
-            return new GuessNumber(guessNumber);
-        } catch (IllegalArgumentException e) {
-            return readFirstGuessNumber();
+        guessRange = guessStatus.narrowRange(guessNumber, guessRange);
+        if (guessStatus.isContinue()) {
+            play(answerNumber, guessRange);
         }
     }
 

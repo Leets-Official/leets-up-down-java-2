@@ -8,10 +8,6 @@ public class InputView {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public int readFirstGuessNumber() {
-        return readGuessNumberInRange(1, 100);
-    }
-
     public int readGuessNumberInRange(int start, int end) {
         System.out.println(String.format(GUESS_NUMBER_FORMAT, start, end));
         return scanner.nextInt();
