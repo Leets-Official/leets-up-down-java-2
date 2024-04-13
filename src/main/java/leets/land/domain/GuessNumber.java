@@ -1,5 +1,7 @@
 package leets.land.domain;
 
+import java.util.Objects;
+
 public class GuessNumber {
 
     private static final int MIN_RANGE = 1;
@@ -21,5 +23,22 @@ public class GuessNumber {
 
     public int compare(int other) {
         return other - value;
+    }
+
+    public int value() {
+        return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GuessNumber that = (GuessNumber) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
