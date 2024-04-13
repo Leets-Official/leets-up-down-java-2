@@ -1,9 +1,10 @@
 package leets.land.domain;
 
+import leets.land.domain.status.GuessStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static leets.land.domain.GuessStatus.*;
+import static leets.land.domain.status.GuessStatus.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AnswerNumberTest {

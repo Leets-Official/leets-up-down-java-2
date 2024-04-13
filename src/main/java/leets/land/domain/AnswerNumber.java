@@ -1,5 +1,7 @@
 package leets.land.domain;
 
+import leets.land.domain.status.GuessStatus;
+
 public class AnswerNumber {
 
     private final int value;

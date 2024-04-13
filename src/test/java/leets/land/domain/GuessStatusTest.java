@@ -1,13 +1,10 @@
 package leets.land.domain;
 
-import leets.land.domain.status.Correct;
-import leets.land.domain.status.Down;
-import leets.land.domain.status.Status;
-import leets.land.domain.status.Up;
+import leets.land.domain.status.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static leets.land.domain.GuessStatus.*;
+import static leets.land.domain.status.GuessStatus.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GuessStatusTest {

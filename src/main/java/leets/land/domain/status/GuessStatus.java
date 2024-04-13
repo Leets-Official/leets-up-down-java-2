@@ -1,9 +1,6 @@
-package leets.land.domain;
+package leets.land.domain.status;
 
-import leets.land.domain.status.Correct;
-import leets.land.domain.status.Down;
-import leets.land.domain.status.Status;
-import leets.land.domain.status.Up;
+import leets.land.domain.GuessNumber;
 
 import java.util.Arrays;
 import java.util.function.Function;
