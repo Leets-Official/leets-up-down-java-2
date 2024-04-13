@@ -1,33 +1,40 @@
 package leets.land.domain.status;
 
 import leets.land.domain.GuessNumber;
+import leets.land.domain.GuessRange;
 
 import java.util.Arrays;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 public enum GuessStatus {
 
-    UP(compared -> compared > 0, Up::new),
-    DOWN(compared -> compared < 0, Down::new),
-    CORRECT(compared -> compared == 0, Correct::new);
+    UP(new Up()),
+    DOWN(new Down()),
+    CORRECT(new Correct());
 
-    private final Predicate<Integer> compare;
-    private final Function<GuessNumber, Status> status;
+    private final Status status;
+    private final GuessRange guessRange;
 
-    GuessStatus(Predicate<Integer> compare, Function<GuessNumber, Status> status) {
-        this.compare = compare;
+    GuessStatus(Status status) {
         this.status = status;
+        this.guessRange = new GuessRange();
     }
 
     public static GuessStatus match(int gap) {
         return Arrays.stream(values())
-                .filter(status -> status.compare.test(gap))
+                .filter(status -> status.status.isValid(gap))
                 .findFirst()
                 .orElseThrow();
     }
 
-    public Status match(GuessNumber guessNumber) {
-        return status.apply(guessNumber);
+    public void narrowRange(GuessNumber guessNumber) {
+        status.narrowRange(guessRange, guessNumber);
+    }
+
+    public boolean isContinue() {
+        return status.isContinue();
+    }
+
+    public GuessRange guessRange() {
+        return guessRange;
     }
 }

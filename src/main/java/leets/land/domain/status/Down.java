@@ -1,17 +1,22 @@
 package leets.land.domain.status;
 
 import leets.land.domain.GuessNumber;
+import leets.land.domain.GuessRange;
 
 public class Down implements Status {
 
-    private final GuessNumber max;
-
-    public Down(GuessNumber max) {
-        this.max = max;
+    @Override
+    public void narrowRange(GuessRange guessRange, GuessNumber guessNumber) {
+        guessRange.downMax(guessNumber);
     }
 
     @Override
-    public boolean isEnd() {
-        return false;
+    public boolean isValid(int gap) {
+        return gap < 0;
+    }
+
+    @Override
+    public boolean isContinue() {
+        return true;
     }
 }

@@ -1,17 +1,22 @@
 package leets.land.domain.status;
 
 import leets.land.domain.GuessNumber;
+import leets.land.domain.GuessRange;
 
 public class Up implements Status {
 
-    private final GuessNumber min;
-
-    public Up(GuessNumber min) {
-        this.min = min;
+    @Override
+    public void narrowRange(GuessRange guessRange, GuessNumber guessNumber) {
+        guessRange.upMin(guessNumber);
     }
 
     @Override
-    public boolean isEnd() {
-        return false;
+    public boolean isValid(int gap) {
+        return gap > 0;
+    }
+
+    @Override
+    public boolean isContinue() {
+        return true;
     }
 }
