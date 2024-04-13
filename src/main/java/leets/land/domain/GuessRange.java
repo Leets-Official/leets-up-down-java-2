@@ -4,8 +4,10 @@ import java.util.Objects;
 
 public class GuessRange {
 
-    private final GuessNumber min;
-    private final GuessNumber max;
+    private static final String ERROR_FORMAT = "[ERROR] %s";
+
+    private GuessNumber min;
+    private GuessNumber max;
 
     public GuessRange(GuessNumber min, GuessNumber max) {
         this.min = min;
@@ -30,6 +32,12 @@ public class GuessRange {
 
     public int max() {
         return max.value();
+    }
+
+    public void checkRange(int guessNumber) {
+        if (guessNumber < min() || guessNumber > max()) {
+            throw new IllegalArgumentException(String.format(ERROR_FORMAT, "범위를 벗어납니다."));
+        }
     }
 
     @Override

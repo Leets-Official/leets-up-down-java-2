@@ -1,9 +1,8 @@
 package leets.land.controller;
 
-import leets.land.domain.AnswerNumber;
 import leets.land.domain.GuessNumber;
 import leets.land.domain.GuessRange;
-import leets.land.domain.RandomNumberGenerator;
+import leets.land.domain.UpDownGame;
 import leets.land.domain.status.GuessStatus;
 import leets.land.view.InputView;
 import leets.land.view.OutputView;
@@ -14,26 +13,27 @@ public class GameMachine {
     private final OutputView outputView = new OutputView();
 
     public void run() {
-        AnswerNumber answerNumber = new RandomNumberGenerator().generate();
-        GuessRange guessRange = new GuessRange();
-        play(answerNumber, guessRange);
+        UpDownGame upDownGame = new UpDownGame();
+        play(upDownGame);
     }
 
-    private void play(AnswerNumber answerNumber, GuessRange guessRange) {
+    private void play(UpDownGame upDownGame) {
+        GuessRange guessRange = upDownGame.guessRange();
         GuessNumber guessNumber = readGuessNumberInRange(guessRange);
-        GuessStatus guessStatus = answerNumber.compare(guessNumber);
+        GuessStatus guessStatus = upDownGame.play(guessNumber);
         outputView.printGuessStatus(guessStatus);
-        guessRange = guessStatus.narrowRange(guessNumber, guessRange);
         if (guessStatus.isContinue()) {
-            play(answerNumber, guessRange);
+            play(upDownGame);
         }
     }
 
     private GuessNumber readGuessNumberInRange(GuessRange guessRange) {
         try {
             int guessNumber = inputView.readGuessNumberInRange(guessRange.min(), guessRange.max());
+            guessRange.checkRange(guessNumber);
             return new GuessNumber(guessNumber);
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return readGuessNumberInRange(guessRange);
         }
     }
