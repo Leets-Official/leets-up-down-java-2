@@ -1,4 +1,4 @@
-package leets.land;
+package leets.land.view;
 
 import java.util.Scanner;
 
@@ -14,7 +14,25 @@ public class InputView {
     public int readNumber() {
         System.out.print("숫자를 입력해주세요(1 ~ 100) : ");
         String number = sc.next();
-        return validateNumberType(number);
+        return checkNumberRange(checkNumberType(number));
+    }
+
+    public int checkNumberRange(int number) {
+        if (number < 1) {
+            System.out.println("[ERROR] 범위 내의 숫자를 입력하세요. ");
+            return readNumber();
+        } else {
+            return number;
+        }
+    }
+
+    public int checkNumberType(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 입력 문자의 타입이 맞지 않습니다.");
+            return readNumber();
+        }
     }
 
     public String readString() {
