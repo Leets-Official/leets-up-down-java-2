@@ -19,7 +19,6 @@ public class Controller {
     public void numberVersion() {
         double randomValue = Math.random();
         int randomNumber = (int)(randomValue *100) +1;
-        System.out.println(randomNumber);
         int cnt = 0;
         int correct = -1;
         Range range = new Range(1, 100);
@@ -43,7 +42,6 @@ public class Controller {
 
     public void alphaVersion() {
         char randomAlpha = (char)((Math.random() * 58) + 65);
-        System.out.println(randomAlpha);
         int cnt = 0;
         char correct = 'A'-1;
         CharRange range = new CharRange('A', 'z');
