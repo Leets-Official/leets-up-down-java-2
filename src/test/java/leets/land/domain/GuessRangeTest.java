@@ -1,5 +1,7 @@
 package leets.land.domain;
 
+import leets.land.domain.guess.GuessNumber;
+import leets.land.domain.guess.GuessRange;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

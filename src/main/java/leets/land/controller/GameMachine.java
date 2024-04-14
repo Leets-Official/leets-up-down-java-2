@@ -1,10 +1,10 @@
 package leets.land.controller;
 
-import leets.land.domain.GuessNumber;
-import leets.land.domain.GuessRange;
-import leets.land.domain.NumberUpDownGame;
-import leets.land.domain.UpDownGame;
+import leets.land.domain.guess.GuessNumber;
+import leets.land.domain.guess.GuessRange;
 import leets.land.domain.status.GuessStatus;
+import leets.land.domain.updowngame.NumberUpDownGame;
+import leets.land.domain.updowngame.UpDownGame;
 import leets.land.view.InputView;
 import leets.land.view.OutputView;
 

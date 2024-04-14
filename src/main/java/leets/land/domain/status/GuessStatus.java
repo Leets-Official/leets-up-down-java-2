@@ -1,7 +1,7 @@
 package leets.land.domain.status;
 
-import leets.land.domain.GuessNumber;
-import leets.land.domain.GuessRange;
+import leets.land.domain.guess.GuessNumber;
+import leets.land.domain.guess.GuessRange;
 
 import java.util.Arrays;
 

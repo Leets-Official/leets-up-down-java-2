@@ -1,4 +1,6 @@
-package leets.land.domain;
+package leets.land.domain.updowngame;
+
+import leets.land.domain.AnswerNumber;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package leets.land.domain;
+package leets.land.domain.guess;
 
 public interface GuessValue {
 

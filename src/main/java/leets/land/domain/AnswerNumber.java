@@ -1,5 +1,6 @@
 package leets.land.domain;
 
+import leets.land.domain.guess.GuessNumber;
 import leets.land.domain.status.GuessStatus;
 
 public class AnswerNumber {
