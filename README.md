@@ -1,37 +1,4 @@
-public int readNumber(int min, int max) {
-    System.out.printf("숫자를 입력해주세요(%d ~ %d) : ", min, max);
-    String number = sc.next();
-    return checkNumberRange(checkNumberType(number), min, max);
-}
-
-public int checkNumberRange(int number, int min, int max) {
-    if (number < min || number > max) {
-        System.out.println("[ERROR] 범위 내의 숫자를 입력하세요. ");
-        return readNumber(min, max);
-    } else {
-        return number;
-    }
-}public void numberVersion() {
-    double randomValue = Math.random();
-    int randomNumber = (int)(randomValue *100) +1;
-    System.out.println(randomNumber);
-    int cnt = 0;
-    int correct = -1;
-    int min = 1;
-    int max = 100;
-    while (correct != randomNumber) {
-        correct = inputView.readNumber(min, max);
-        if (correct < randomNumber) {
-            System.out.println("UP");
-            min = correct + 1;
-        } else if (correct > randomNumber) {
-            System.out.println("DOWN");
-            max = correct - 1;
-        }
-        cnt ++;
-    }
-    outputView.printCorrectMessage(cnt);
-}# 👆 업다운
+# 👆 업다운
 
 </br>
 
