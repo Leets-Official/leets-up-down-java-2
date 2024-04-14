@@ -2,6 +2,7 @@ package leets.land.controller;
 
 import leets.land.domain.GuessNumber;
 import leets.land.domain.GuessRange;
+import leets.land.domain.NumberUpDownGame;
 import leets.land.domain.UpDownGame;
 import leets.land.domain.status.GuessStatus;
 import leets.land.view.InputView;
@@ -13,7 +14,7 @@ public class GameMachine {
     private final OutputView outputView = new OutputView();
 
     public void run() {
-        UpDownGame upDownGame = new UpDownGame();
+        UpDownGame upDownGame = new NumberUpDownGame();
         play(upDownGame);
     }
 
