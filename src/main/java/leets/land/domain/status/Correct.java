@@ -1,14 +1,14 @@
 package leets.land.domain.status;
 
-import leets.land.domain.guess.GuessNumber;
 import leets.land.domain.guess.GuessRange;
+import leets.land.domain.guess.GuessValue;
 
 public class Correct implements Status {
 
     @Override
-    public GuessRange narrowRange(GuessRange guessRange, GuessNumber guessNumber) {
-        GuessRange downMaxed = guessRange.downMax(guessNumber);
-        return downMaxed.upMin(guessNumber);
+    public GuessRange narrowRange(GuessRange guessRange, GuessValue guessValue) {
+        GuessRange downMaxed = guessRange.downMax(guessValue);
+        return downMaxed.upMin(guessValue);
     }
 
     @Override

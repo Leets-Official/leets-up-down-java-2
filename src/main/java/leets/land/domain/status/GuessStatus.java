@@ -1,7 +1,7 @@
 package leets.land.domain.status;
 
-import leets.land.domain.guess.GuessNumber;
 import leets.land.domain.guess.GuessRange;
+import leets.land.domain.guess.GuessValue;
 
 import java.util.Arrays;
 
@@ -24,8 +24,8 @@ public enum GuessStatus {
                 .orElseThrow();
     }
 
-    public GuessRange narrowRange(GuessNumber guessNumber, GuessRange guessRange) {
-        return status.narrowRange(guessRange, guessNumber);
+    public GuessRange narrowRange(GuessValue guessValue, GuessRange guessRange) {
+        return status.narrowRange(guessRange, guessValue);
     }
 
     public boolean isContinue() {

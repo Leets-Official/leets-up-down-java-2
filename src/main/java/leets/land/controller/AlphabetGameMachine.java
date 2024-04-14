@@ -1,40 +1,41 @@
 package leets.land.controller;
 
-import leets.land.domain.guess.GuessNumber;
+import leets.land.domain.guess.GuessAlphabet;
 import leets.land.domain.guess.GuessRange;
+import leets.land.domain.guess.GuessValue;
 import leets.land.domain.status.GuessStatus;
-import leets.land.domain.updowngame.NumberUpDownGame;
+import leets.land.domain.updowngame.AlphabetUpDownGame;
 import leets.land.domain.updowngame.UpDownGame;
 import leets.land.view.InputView;
 import leets.land.view.OutputView;
 
-public class GameMachine {
+public class AlphabetGameMachine {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
 
     public void run() {
-        UpDownGame upDownGame = new NumberUpDownGame();
+        UpDownGame upDownGame = new AlphabetUpDownGame();
         play(upDownGame);
     }
 
     private void play(UpDownGame upDownGame) {
-        GuessNumber guessNumber = readGuessNumberInRange(upDownGame.guessRange());
-        GuessStatus guessStatus = upDownGame.play(guessNumber);
+        GuessValue guessValue = readGuessValueInRange(upDownGame.guessRange());
+        GuessStatus guessStatus = upDownGame.play(guessValue);
         outputView.printGuessStatus(guessStatus);
         if (guessStatus.isContinue()) {
             play(upDownGame);
         }
     }
 
-    private GuessNumber readGuessNumberInRange(GuessRange guessRange) {
+    private GuessValue readGuessValueInRange(GuessRange guessRange) {
         try {
-            int guessNumber = inputView.readGuessNumberInRange(guessRange.min(), guessRange.max());
-            guessRange.checkRange(guessNumber);
-            return new GuessNumber(guessNumber);
+            int guessValue = inputView.readGuessAlphabetInRange(guessRange.min(), guessRange.max());
+            guessRange.checkRange(guessValue);
+            return new GuessAlphabet(guessValue);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return readGuessNumberInRange(guessRange);
+            return readGuessValueInRange(guessRange);
         }
     }
 }
