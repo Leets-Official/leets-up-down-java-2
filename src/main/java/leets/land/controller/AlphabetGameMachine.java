@@ -9,11 +9,12 @@ import leets.land.domain.updowngame.UpDownGame;
 import leets.land.view.InputView;
 import leets.land.view.OutputView;
 
-public class AlphabetGameMachine {
+public class AlphabetGameMachine implements GameMachine {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
 
+    @Override
     public void run() {
         UpDownGame upDownGame = new AlphabetUpDownGame();
         play(upDownGame);

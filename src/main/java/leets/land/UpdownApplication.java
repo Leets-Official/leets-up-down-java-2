@@ -1,12 +1,11 @@
 package leets.land;
 
-import leets.land.controller.AlphabetGameMachine;
+import leets.land.controller.GameLoader;
 
 public class UpdownApplication {
 
     public static void main(String[] args) {
-//        GameMachine gameMachine = new GameMachine();
-        AlphabetGameMachine gameMachine = new AlphabetGameMachine();
-        gameMachine.run();
+        GameLoader gameLoader = new GameLoader();
+        gameLoader.load();
     }
 }
