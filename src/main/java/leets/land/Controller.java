@@ -1,5 +1,6 @@
 package leets.land;
 
+import leets.land.view.CharRange;
 import leets.land.view.InputView;
 import leets.land.view.OutputView;
 
@@ -24,36 +25,43 @@ public class Controller {
         Range range = new Range(1, 100);
         while (correct != randomNumber) {
             correct = inputView.readNumber(range);
-            if (correct < randomNumber) {
-                System.out.println("UP");
-                range.setMin(correct + 1);
-            } else if (correct > randomNumber) {
-                System.out.println("DOWN");
-                range.setMax(correct - 1);
-            }
+            printUpDown(correct, randomNumber, range); // Call printUpDown function
             cnt ++;
         }
         outputView.printCorrectMessage(cnt);
     }
 
-    public void alphaVersion() {
-            char alpha = inputView.readAlpha();
-            char randomAlpha = (char)((Math.random() * 26) + 65);
-            System.out.println(randomAlpha);
-            int cnt = 0;
-            char correct = alpha;
-            while (correct != randomAlpha) {
-                correct = inputView.readAlpha(correct);
-                printUpDown(correct, randomAlpha);
-                cnt ++;
-            outputView.printCorrectMessage(cnt);
+    public void printUpDown(int correct, int randomNumber, Range range) {
+        if (correct < randomNumber) {
+            System.out.println("UP");
+            range.setMin(correct + 1);
+        } else if (correct > randomNumber) {
+            System.out.println("DOWN");
+            range.setMax(correct - 1);
         }
     }
-    public void printUpDown(char correct, char randomAlpha) {
+
+    public void alphaVersion() {
+        char randomAlpha = (char)((Math.random() * 58) + 65);
+        System.out.println(randomAlpha);
+        int cnt = 0;
+        char correct = 'A'-1;
+        CharRange range = new CharRange('A', 'z');
+        while (correct != randomAlpha) {
+            correct = inputView.readAlpha(range);
+            printUpDown(correct, randomAlpha, range);
+            cnt ++;
+        }
+        outputView.printCorrectMessage(cnt);
+    }
+
+    public void printUpDown(char correct, char randomAlpha, CharRange range) {
         if (correct < randomAlpha) {
             System.out.println("UP");
-        } else if(correct > randomAlpha) {
-            System.out.println("Down");
+            range.setMin((char)(correct + 1));
+        } else if (correct > randomAlpha) {
+            System.out.println("DOWN");
+            range.setMax((char)(correct - 1));
         }
     }
 }

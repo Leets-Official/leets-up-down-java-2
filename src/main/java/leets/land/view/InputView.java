@@ -27,6 +27,21 @@ public class InputView {
         }
     }
 
+    public char readAlpha(CharRange range) {
+        System.out.printf("영어를 입력해주세요(%c ~ %c) : ", range.getMin(), range.getMax());
+        String alpha = sc.next();
+        return checkAlphaRange(validateAlpha(alpha, range), range);
+    }
+
+    public char checkAlphaRange(char alpha, CharRange range) {
+        if (alpha < range.getMin() || alpha > range.getMax()) {
+            System.out.println("[ERROR] 범위 내의 알파벳을 입력하세요. ");
+            return readAlpha(range);
+        } else {
+            return alpha;
+        }
+    }
+
     public int checkNumberRange(int number, Range range) {
         if (number < range.getMin() || number > range.getMax()) {
             System.out.println("[ERROR] 범위 내의 숫자를 입력하세요. ");
@@ -60,37 +75,22 @@ public class InputView {
         }
     }
 
-    public char readAlpha() {
-        System.out.print("영어를 입력해주세요(A ~ z) : ");
-        String alpha = sc.next();
-        return validateAlpha(alpha);
-    }
-
-    public char readAlpha(char c) {
-        char start = (char)(c + 1);
-        System.out.printf("영어를 입력해주세요(%c ~ Z) : ",start);
-        String alpha = sc.next();
-        char validAlpha = validateAlpha(alpha);
-        if(validAlpha < 'A' || validAlpha > 'Z'){
-            System.out.println("[ERROR]: 범위 내의 알파벳을 입력하세요.");
-            return readAlpha();
-        }
-        return validAlpha;
-    }
-
-    public char validateAlpha(String alpha) {
+    public char validateAlpha(String alpha, CharRange range) {
         if (alpha.length() >= 2) {
             System.out.println("[ERROR] 입력 문자의 길이는 1을 넘을 수 없습니다.");
-            return readAlpha();
+            return readAlpha(range);
         }
-        for (char c : alpha.toCharArray()) {
-            if (!Character.isAlphabetic(c)) {
-                System.out.println("[ERROR] 입력 문자의 타입이 맞지 않습니다.");
-                return readAlpha();
-            }
+        char c = alpha.charAt(0);
+        if (!(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z')) {
+            System.out.println("[ERROR] 입력 문자의 타입이 맞지 않습니다.");
+            return readAlpha(range);
         }
-        return alpha.charAt(0);
-    }
+        if (c < range.getMin() || c > range.getMax()) {
+            System.out.println("[ERROR] 범위 내의 알파벳을 입력하세요. ");
+            return readAlpha(range);
+        }
+        return c;
+}
 
 
 
