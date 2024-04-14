@@ -8,7 +8,6 @@ public class RandomAlphabetGenerator {
 
     private static final int CAPITAL_ORIGIN_RANDOM = 'A';
     private static final int CAPITAL_BOUND_RANDOM = 'Z';
-    private static final int TO_SMALL = 'a' - 'A';
 
     private final Random random = new Random();
 
@@ -16,7 +15,7 @@ public class RandomAlphabetGenerator {
         int randomNumber = random.nextInt(CAPITAL_ORIGIN_RANDOM, CAPITAL_BOUND_RANDOM);
         boolean isSmall = random.nextBoolean();
         if (isSmall) {
-            randomNumber += TO_SMALL;
+            randomNumber = Character.toLowerCase(randomNumber);
         }
         return new AnswerNumber(randomNumber);
     }
