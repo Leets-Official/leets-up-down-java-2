@@ -10,7 +10,7 @@ class GuessRangeTest {
     @Test
     @DisplayName("상한값을 낮춘다")
     void downMax() {
-        GuessRange guessRange = new GuessRange();
+        GuessRange guessRange = new GuessRange(new GuessNumber(1), new GuessNumber(100));
         GuessNumber max = new GuessNumber(50);
 
         GuessRange downedMax = guessRange.downMax(max);
@@ -21,7 +21,7 @@ class GuessRangeTest {
     @Test
     @DisplayName("하한값을 높인다")
     void upMin() {
-        GuessRange guessRange = new GuessRange();
+        GuessRange guessRange = new GuessRange(new GuessNumber(1), new GuessNumber(100));
         GuessNumber min = new GuessNumber(50);
 
         GuessRange downedMax = guessRange.upMin(min);

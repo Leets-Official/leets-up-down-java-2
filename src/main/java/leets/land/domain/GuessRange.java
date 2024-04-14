@@ -6,28 +6,24 @@ public class GuessRange {
 
     private static final String ERROR_FORMAT = "[ERROR] %s";
 
-    private final GuessNumber min;
-    private final GuessNumber max;
+    private final GuessValue min;
+    private final GuessValue max;
 
-    public GuessRange(GuessNumber min, GuessNumber max) {
+    public GuessRange(GuessValue min, GuessValue max) {
         this.min = min;
         this.max = max;
     }
 
-    public GuessRange() {
-        this(new GuessNumber(1), new GuessNumber(100));
-    }
-
-    public GuessRange downMax(GuessNumber max) {
+    public GuessRange downMax(GuessValue max) {
         return new GuessRange(min, max);
     }
 
-    public GuessRange upMin(GuessNumber min) {
+    public GuessRange upMin(GuessValue min) {
         return new GuessRange(min, max);
     }
 
-    public void checkRange(int guessNumber) {
-        if (guessNumber < min() || guessNumber > max()) {
+    public void checkRange(int guessValue) {
+        if (guessValue < min() || guessValue > max()) {
             throw new IllegalArgumentException(String.format(ERROR_FORMAT, "범위를 벗어납니다."));
         }
     }

@@ -5,7 +5,7 @@ import leets.land.domain.status.GuessStatus;
 public class AlphabetUpDownGame implements UpDownGame {
 
     private final AnswerNumber answerNumber = new RandomAlphabetGenerator().generate();
-    private GuessRange guessRange = new GuessRange(new GuessNumber('A'), new GuessNumber('z'));
+    private GuessRange guessRange = new GuessRange(new GuessAlphabet('A'), new GuessAlphabet('z'));
 
     @Override
     public GuessStatus play(GuessNumber guessNumber) {
