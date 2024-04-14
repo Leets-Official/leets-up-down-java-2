@@ -3,8 +3,6 @@ package leets.land;
 import leets.land.view.InputView;
 import leets.land.view.OutputView;
 
-import java.util.Random;
-
 public class Controller {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
@@ -23,26 +21,31 @@ public class Controller {
         System.out.println(randomNumber);
         int cnt = 0;
         int correct = -1;
+        Range range = new Range(1, 100);
         while (correct != randomNumber) {
-            correct = inputView.readNumber();
-            upNumberVersion.printUpDown(correct, randomNumber);
+            correct = inputView.readNumber(range);
+            if (correct < randomNumber) {
+                System.out.println("UP");
+                range.setMin(correct + 1);
+            } else if (correct > randomNumber) {
+                System.out.println("DOWN");
+                range.setMax(correct - 1);
+            }
             cnt ++;
         }
         outputView.printCorrectMessage(cnt);
     }
 
     public void alphaVersion() {
-        String alpha = inputView.readString();
-        if (Character.isUpperCase(alpha.charAt(0))) {
+            char alpha = inputView.readAlpha();
             char randomAlpha = (char)((Math.random() * 26) + 65);
             System.out.println(randomAlpha);
-            int cnt = 1;
-            char correct = alpha.charAt(0);
+            int cnt = 0;
+            char correct = alpha;
             while (correct != randomAlpha) {
-                correct = inputView.readUpperAlpha(correct);
+                correct = inputView.readAlpha(correct);
                 printUpDown(correct, randomAlpha);
                 cnt ++;
-            }
             outputView.printCorrectMessage(cnt);
         }
     }

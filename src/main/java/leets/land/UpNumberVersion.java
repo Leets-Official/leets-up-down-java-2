@@ -1,6 +1,5 @@
 package leets.land;
 
-import java.util.Random;
 
 public class UpNumberVersion {
 
