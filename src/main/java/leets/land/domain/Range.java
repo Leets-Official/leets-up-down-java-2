@@ -2,22 +2,22 @@ package leets.land.domain;
 
 public class Range {
 
-    private Object top;
-    private Object bottom;
+    private String top;
+    private String bottom;
 
-    public Object getTop() {
+    public String getTop() {
         return top;
     }
 
-    public void setTop(Object top) {
+    public void setTop(String top) {
         this.top = top;
     }
 
-    public Object getBottom() {
+    public String getBottom() {
         return bottom;
     }
 
-    public void setBottom(Object bottom) {
+    public void setBottom(String bottom) {
         this.bottom = bottom;
     }
 }

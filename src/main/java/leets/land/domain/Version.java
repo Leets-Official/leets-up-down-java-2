@@ -1,8 +1,8 @@
 package leets.land.domain;
 
 public enum Version {
-    ENGLISH_VERSION(1, "영어"),
-    NUMBER_VERSION(2, "숫자");
+    NUMBER_VERSION(1, "숫자"),
+    ENGLISH_VERSION(2, "영어");
 
     private final int value;
     private final String name;
