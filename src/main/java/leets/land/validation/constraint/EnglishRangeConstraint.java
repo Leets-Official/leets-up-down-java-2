@@ -1,6 +1,7 @@
 package leets.land.validation.constraint;
 
 import leets.land.domain.Range;
+import leets.land.validation.exception.InvalidInputException;
 
 public class EnglishRangeConstraint implements Constraint<String> {
 
@@ -11,8 +12,9 @@ public class EnglishRangeConstraint implements Constraint<String> {
     }
 
     @Override
-    public boolean isValid(String value) {  // if (하한값 <= value <= 상한값)
-        return value.compareTo((String) range.getBottom()) >= 0
-                    && value.compareTo((String) range.getTop()) <= 0;
+    public void isValid(String value) throws InvalidInputException {
+        if(value.compareTo(range.getBottom()) < 0       // 입력 값이 범위 사이에 존재하는가
+                    || value.compareTo(range.getTop()) > 0)
+            throw new InvalidInputException("[ERROR] 범위 내의 알파벳을 입력하세요.");
     }
 }

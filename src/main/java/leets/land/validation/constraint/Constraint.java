@@ -1,5 +1,7 @@
 package leets.land.validation.constraint;
 
+import leets.land.validation.exception.InvalidInputException;
+
 public interface Constraint<T> {
-    boolean isValid(T value);
+    void isValid(T value) throws InvalidInputException;
 }

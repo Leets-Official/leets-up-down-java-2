@@ -1,8 +1,10 @@
 package leets.land.validation.constraint;
 
+import leets.land.validation.exception.InvalidInputException;
+
 import java.util.regex.Pattern;
 
-public class InvalidVersionConstraint implements Constraint<Integer> {
+public class InvalidVersionConstraint implements Constraint<String> {
 
     /**
      * 저번 주 상황에선 regex를 미리 컴파일 시키는건 이해됐지만, 이번엔 미리 컴파일 시키는게 더 효율적인지는 고민입니다!
@@ -14,7 +16,8 @@ public class InvalidVersionConstraint implements Constraint<Integer> {
     Pattern pattern = Pattern.compile("^[12]$");
 
     @Override
-    public boolean isValid(Integer value) {
-        return pattern.matcher(value.toString()).matches();
+    public void isValid(String value) throws InvalidInputException {
+        if(!pattern.matcher(value).matches())   // 1, 2가 아닌 다른 값을 입력했는가
+            throw new InvalidInputException("[ERROR] 존재하지 않는 버전입니다. 다시 입력해주세요: ");
     }
 }
