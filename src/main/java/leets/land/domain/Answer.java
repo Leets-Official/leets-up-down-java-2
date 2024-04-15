@@ -1,24 +1,16 @@
 package leets.land.domain;
 
-import leets.land.validation.constraint.Constraint;
-import leets.land.validation.constraint.InvalidVersionConstraint;
 import leets.land.validation.exception.InvalidInputException;
-import leets.land.validation.validator.VersionValidator;
 
 public class Answer {
 
     private String answer;
-    private static final Constraint<Integer> constraint = new InvalidVersionConstraint();
-
+    private Version version;
 
     // constructor -> 버젼에 따라 난수 생성
-    public Answer(String answer, int version) {
+    public Answer(String answer, Version version) {
         try {
-
-            if(constraint.isValid(version))
-                throw new InvalidInputException("[ERROR] 존재하지 않는 버전입니다.");
-
-
+            throw new InvalidInputException("[TEMP]");
 
         } catch (InvalidInputException e) {
             System.out.println(e.getMessage());
