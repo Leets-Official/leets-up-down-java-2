@@ -42,7 +42,7 @@ public class UpDownApplication {
 		}
 	}
 
-	public String read() {	// 입력 안했을 때 잡기
+	public String read() {
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			return Optional.of(br.readLine())
