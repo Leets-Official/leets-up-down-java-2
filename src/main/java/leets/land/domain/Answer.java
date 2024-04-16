@@ -14,13 +14,11 @@ public class Answer {
     private final Version version;
 
     public Answer(String version) throws InvalidInputException {
-        VersionValidator versionValidator = new VersionValidator();
-        versionValidator.validate(version);
+        new VersionValidator().validate(version);
 
-        if(Integer.parseInt(version) == NUMBER_VERSION.getValue()) {
+        if (Integer.parseInt(version) == NUMBER_VERSION.getValue()) {
             this.version = NUMBER_VERSION;
-        }
-        else
+        } else
             this.version = ENGLISH_VERSION;
         this.answer = generateRandomAnswer();
     }
@@ -32,14 +30,9 @@ public class Answer {
         }
 
         // 알파벳 버젼일 때
-        if (this.version == ENGLISH_VERSION) {
-            char[] alphabets = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-            Random random = new Random();
-            return alphabets[random.nextInt(alphabets.length)];
-        }
-
-        // 이미 validate 해서 둘 말곤 값이 들어올 수가 없음
-        return null;
+        char[] alphabets = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        Random random = new Random();
+        return alphabets[random.nextInt(alphabets.length)];
     }
 
     public Version getVersion() {
@@ -47,9 +40,8 @@ public class Answer {
     }
 
     public int compareTo(Version version, Object trial) {
-        if(version == NUMBER_VERSION)
+        if (version == NUMBER_VERSION)
             return Integer.compare(Integer.parseInt(answer.toString()), Integer.parseInt(trial.toString()));
-        else
-            return answer.toString().compareTo(trial.toString());
+        return answer.toString().compareTo(trial.toString());
     }
 }
