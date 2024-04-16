@@ -17,6 +17,7 @@ public class UpDownApplication {
 	private static final boolean UNTIL_CORRECT = true;
 	private static Answer answer;
 	private static final Range range = new Range();
+	private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	public static void main(String[] args) {
 		UpDownApplication app = new UpDownApplication();
@@ -44,7 +45,6 @@ public class UpDownApplication {
 
 	public String read() {
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			return Optional.of(br.readLine())
 					.filter(input -> !input.trim().isEmpty())
 					.orElseThrow(() -> new InvalidInputException("[ERROR] 값을 입력해주세요: "));
