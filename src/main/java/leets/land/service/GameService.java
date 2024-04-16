@@ -1,4 +1,9 @@
 package leets.land.service;
 
-public class GameService {
+public interface GameService {
+    //난수발생
+
+    //정답확인
+
+    //
 }
