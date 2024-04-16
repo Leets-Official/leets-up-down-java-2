@@ -5,14 +5,27 @@ import leets.land.validation.validator.TrialValidator;
 
 public class Trial {
 
-    private final Object trial;
-    private static int count;
-    private static final TrialValidator validator = new TrialValidator();
+    private Object trial;
+    private int count;
+    private final TrialValidator validator = new TrialValidator();
 
-    public Trial(Version version, Object trial, Range range) throws InvalidInputException {
-        ++count;
+    private Trial() {
+    }
+
+    public Trial init(Version version, Object trial, Range range) throws InvalidInputException {
+        ++this.count;
         validator.validate(version, trial, range);   // !없이 할 수 있도록 수정 예정
         this.trial = trial;
+
+        return this;
+    }
+
+    private static class LazyHolder {
+        public static final Trial singletonTrial = new Trial();
+    }
+
+    public static Trial getInstance() {
+        return LazyHolder.singletonTrial;
     }
 
     public Object getTrial() {

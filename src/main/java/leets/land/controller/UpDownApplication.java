@@ -15,7 +15,7 @@ import static leets.land.domain.Version.NUMBER_VERSION;
 public class UpDownApplication {
 
 	private static final boolean UNTIL_CORRECT = true;
-	private static Answer answer;	// final로 하고싶은데 흠 ..
+	private static Answer answer;
 	private static final Range range = new Range();
 
 	public static void main(String[] args) {
@@ -56,11 +56,12 @@ public class UpDownApplication {
 		}
 	}
 
+	// 비즈니스 로직
 	public void guess() {
 		while (UNTIL_CORRECT) {
 			try {
 				System.out.print(answer.getVersion().getName() + "를 입력해주세요(" + range.getBottom() + " ~ " + range.getTop() +"): ");
-				Trial trial = new Trial(answer.getVersion(), read(), range);
+				Trial trial = Trial.getInstance().init(answer.getVersion(), read(), range);
 
 				int result = answer.compareTo(answer.getVersion(), trial.getTrial());	// 조건문의 조건 내에서 연산하면 여러번 수행해야 하므로 따로 뺌
 
@@ -69,12 +70,12 @@ public class UpDownApplication {
 					break;
 				}
 
-				if(result > 0) {	// trial > answer
+				if(result > 0) {	// trial < answer
 					System.out.println("UP");
 					range.setBottom(trial.getTrial().toString());
 				}
 
-				if(result < 0) {	// trial < answer
+				if(result < 0) {	// trial > answer
 					System.out.println("DOWN");
 					range.setTop(trial.getTrial().toString());
 				}
