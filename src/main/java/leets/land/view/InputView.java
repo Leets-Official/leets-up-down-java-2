@@ -8,6 +8,7 @@ public class InputView {
 
     //숫자, 영어 버전 입력
     public int inputVersionNum(){
+
         System.out.print("게임 버전을 입력해주세요 (숫자: 1, 영어: 2): ");
         int versionNum = scan.nextInt();
         try{

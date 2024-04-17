@@ -1,15 +1,15 @@
 package leets.land;
 
 
-import leets.land.controller.MatchController;
+import leets.land.controller.GameController;
 
 public class UpdownApplication {
 
 
 
 	public static void main(String[] args)  {
-		MatchController matchController = new MatchController();
-		matchController.runApp();
+		GameController gameController = new GameController();
+		gameController.runApp();
 	}
 }
 
