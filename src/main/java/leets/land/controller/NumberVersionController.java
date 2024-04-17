@@ -37,6 +37,7 @@ public class NumberVersionController {
             min = number + 1;
             return;
         }
+        outputView.showDown();
         max = number - 1;
 
     }

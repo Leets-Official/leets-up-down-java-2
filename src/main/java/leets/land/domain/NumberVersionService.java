@@ -24,16 +24,10 @@ public class NumberVersionService {
     }
 
     public boolean checkAnswer(int answer, int number) {
-        if (answer == number) {
-            return true;
-        }
-        return false;
+        return answer == number;
     }
 
     public boolean calcIsNumberUp(int answer, int number) {
-        if (answer > number) {
-            return true;
-        }
-        return false;
+        return answer > number;
     }
 }

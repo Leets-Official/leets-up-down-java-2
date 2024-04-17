@@ -34,7 +34,7 @@ public class OutputView {
     }
 
     public void showTryCount(int tryCount) {
-        System.out.println(TRY_COUNT.getMessage() + DELIMITER.getMessage() + tryCount + SUFFIX_TRY_COUNT.getMessage());
+        System.out.println(TRY_COUNT.getMessage() + tryCount + SUFFIX_TRY_COUNT.getMessage());
     }
 
     public void showInvalidVersionError() {
