@@ -52,4 +52,8 @@ public class OutputView {
     public void showInvalidInputType() {
         System.out.println(ERROR_INVALID_INPUT_TYPE.getMessage());
     }
+
+    public void showNumberRange(int min, int max) {
+        System.out.println(PREFIX_RANGE.getMessage() + min + DELIMITER_RANGE.getMessage() + max + SUFFIX_RANGE.getMessage() + DELIMITER.getMessage());
+    }
 }
