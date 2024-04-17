@@ -1,12 +1,13 @@
-package leets.land.service;
+package leets.land.game;
 
 import leets.land.view.InputView;
 
-public class CharGameService implements GameService{
+public class AlphabetGame implements Game {
+
     private final InputView inputView = new InputView();
 
     @Override
-    public int generateNum() {
+    public int generateRandomVal() {
         int randomNum = (int) (Math.random() * 52);
 
         if (randomNum < 26) {
@@ -18,7 +19,7 @@ public class CharGameService implements GameService{
     }
 
     @Override
-    public int updownGame(int targetAlphabet) {
+    public int updownGameStart(int targetAlphabet) {
         char first = 'A';
         char last = 'z';
         int[] count = {0};

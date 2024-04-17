@@ -1,22 +1,18 @@
-package leets.land.service;
+package leets.land.game;
 
 import leets.land.view.InputView;
 
-import java.util.Scanner;
-
-public class NumgameService implements GameService{
+public class Numgame implements Game {
     private final InputView inputView = new InputView();
 
-
-
     @Override
-    public int generateNum() {
+    public int generateRandomVal() {
         int randomNum = (int) (Math.random() * 100) + 1;
         return randomNum;
     }
 
     @Override
-    public int updownGame(int targetNum) {
+    public int updownGameStart(int targetNum) {
         int low = 1;
         int high = 100;
         int[] count = {0};

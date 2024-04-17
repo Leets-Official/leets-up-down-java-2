@@ -10,5 +10,4 @@ public class OutputView {
         System.out.println("시도한 횟수: "+ count + "회");
     }
 
-    //
 }

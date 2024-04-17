@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class InputView {
 
+    //하나의 스캐너로 입력을 받았을 때 사소한 문제들이 발생해서 분리. [어떤 문젠지 파악하도록 하겠음]
     private final Scanner numScan = new Scanner(System.in);
     private final Scanner charScan = new Scanner(System.in);
 
@@ -18,11 +19,11 @@ public class InputView {
             validVersionNum(versionNum);
             return versionNum;
         } catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            System.out.print(e.getMessage());
             return inputVersionNum();
         } catch (InputMismatchException e){
-            System.out.println("[ERROR] 숫자를 입력해주세요");
-            numScan.nextLine();// 개행문제 비워주기. 안 하면 StackOverFlow
+            System.out.print("[ERROR] 숫자를 입력해주세요 (숫자: 1, 영어: 2): ");
+            numScan.nextLine();// 개행문제 비워주기. 안 하면 StackOverFlow 발생
             return inputVersionNum();
         }
     }
@@ -32,7 +33,7 @@ public class InputView {
      */
     public void validVersionNum(int versionNum){
         if(versionNum!=1&&versionNum!=2){
-            throw new IllegalArgumentException("버전은 1 또는 2만 입력해주세요. ");
+            throw new IllegalArgumentException("버전은 1 또는 2만 입력해주세요. (숫자: 1, 영어: 2): ");
         }
     }
 
@@ -49,7 +50,7 @@ public class InputView {
             System.out.print(low + "~" + high + " 내의 숫자를 입력하세요: ");
             return inputNum(low, high, count);
         } catch (InputMismatchException e){
-            System.out.print("[ERROR] 숫자를 입력하세요");
+            System.out.print("[ERROR] 숫자를 입력하세요: ");
             numScan.nextLine();// 개행문제 비워주기. 안 하면 StackOverFlow
             return inputNum(low, high, count);
         }
@@ -60,7 +61,7 @@ public class InputView {
      */
     public void checkValidNumRange(int low, int high, int inputNum){
         if((inputNum<low)||(inputNum>high)){
-            throw new IllegalArgumentException("[ERROR] 범위 내의 숫자를 입력하세요.");
+            throw new IllegalArgumentException("[ERROR] 범위 내의 숫자를 입력하세요 :");
         }
     }
 
@@ -78,7 +79,7 @@ public class InputView {
             System.out.print(first + "~" + last + " 내의 알파벳을 입력하세요: ");
             return inputChar(first, last, count);
         } catch (InputMismatchException e){
-            System.out.print("[ERROR] 영어 알파벳을 입력하세요");
+            System.out.print("[ERROR] 영어 알파벳을 입력하세요 : ");
             charScan.nextLine();// 개행문제 비워주기. 안 하면 StackOverFlow
             return inputChar(first, last, count);
         }
@@ -89,7 +90,7 @@ public class InputView {
      */
     public void checkValidCharRange(char first, char last, char inputAlphabet) {
         if ((inputAlphabet < first) || (inputAlphabet > last)) {
-            throw new IllegalArgumentException("[ERROR] 범위 내의 알파벳을 입력하세요.");
+            throw new IllegalArgumentException("[ERROR] 범위 내의 알파벳을 입력하세요 : ");
         }
     }
 }

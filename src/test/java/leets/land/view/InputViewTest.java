@@ -9,15 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputViewTest {
 
-    UpdownApplication app;
     InputView inputView;
-    GameController gameController;
 
     @BeforeEach
     void setUp(){
-        app = new UpdownApplication();
         inputView = new InputView();
-        gameController = new GameController();
     }
 
     @Test

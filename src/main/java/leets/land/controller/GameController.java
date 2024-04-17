@@ -1,31 +1,27 @@
 package leets.land.controller;
 
-import leets.land.service.CharGameService;
-import leets.land.service.GameService;
-import leets.land.service.NumgameService;
-import leets.land.view.InputView;
+import leets.land.game.Game;
 import leets.land.view.OutputView;
-
-import java.util.Scanner;
 
 public class GameController {
 
-    private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final GameService gameService;
+    private final Game game;
 
-    public GameController(GameService gameService) {
-        this.gameService = gameService;
+    //버전에 맞는 Game을 appConfig 클래스에서 주입
+    public GameController(Game game) {
+        this.game = game;
     }
 
-    private final Scanner scanner = new Scanner(System.in);
-
-    //서비스에서 돌린 중간 결과를 전달받아 outputview로 출력
-    public void runApp(){
+    //구동부
+    public void runApp() {
         outputView.printStartMessage();
-        int count = 0;
-        int randomNum = gameService.generateNum();
-        count = gameService.updownGame(randomNum);
+
+        int count = 0;// 사용자 입력횟수를 저장하기 위한 변수 초기화
+        int randomNum = game.generateRandomVal();
+        count = game.updownGameStart(randomNum);
+
+        //결과 출력
         outputView.printCount(count);
     }
 }
