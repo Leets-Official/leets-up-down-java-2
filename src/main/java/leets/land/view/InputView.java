@@ -70,7 +70,7 @@ public class InputView {
      */
     public char inputChar(char first, char last, int[] count){
         try{
-            char inputAlphabet = (charScan.nextLine()).charAt(0);
+            char inputAlphabet = (charScan.nextLine()).charAt(0);//한글을 입력했을 때 필터링
             count[0]++;
             checkValidCharRange(first, last, inputAlphabet);
             return inputAlphabet;
