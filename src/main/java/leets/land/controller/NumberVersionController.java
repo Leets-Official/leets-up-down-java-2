@@ -59,6 +59,10 @@ public class NumberVersionController {
 
         while (true) {
             String input = getInput();
+            if (validator.checkInputTypeForNumberVersion(input)) {
+                outputView.showInvalidInputType();
+                continue;
+            }
 
             if (validator.isInputNumber(input)) {
                 if (service.checkRange(input, min, max)) {

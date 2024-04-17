@@ -58,6 +58,10 @@ public class CharVersionController {
 
         while (true) {
             String input = getInput();
+            if (validator.checkInputTypeForCharVersion(input)) {
+                outputView.showInvalidInputType();
+                continue;
+            }
 
             if (validator.isInputChar(input)) {
                 return service.getChar(input);
