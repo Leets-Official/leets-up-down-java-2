@@ -3,10 +3,7 @@ package leets.land.domain;
 public class Validator {
 
     public boolean versionInputIsValid(String inputValue) {
-        if (inputValue.equals("1") || inputValue.equals("2")) {
-            return true;
-        }
-        return false;
+        return inputValue.equals("1") || inputValue.equals("2");
     }
 
     public boolean isInputNumber(String inputValue) {
@@ -16,5 +13,13 @@ public class Validator {
             return false;
         }
         return true;
+    }
+
+    public boolean isInputChar(String input) {
+        if (input != null && input.length() == 1) {
+            int charValue = input.charAt(0);
+            return charValue >= 97 && charValue <= 122;
+        }
+        return false;
     }
 }

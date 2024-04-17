@@ -38,7 +38,7 @@ public class NumberVersionController {
             return;
         }
         max = number - 1;
-        outputView.showDown();
+
     }
 
     private boolean checkIsNumberUp(int answer, int number) {

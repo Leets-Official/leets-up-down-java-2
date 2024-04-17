@@ -34,7 +34,7 @@ public class OutputView {
     }
 
     public void showTryCount(int tryCount) {
-        System.out.println(TRY_COUNT.getMessage() + DELIMITER + tryCount + SUFFIX_TRY_COUNT);
+        System.out.println(TRY_COUNT.getMessage() + DELIMITER.getMessage() + tryCount + SUFFIX_TRY_COUNT.getMessage());
     }
 
     public void showInvalidVersionError() {
@@ -54,6 +54,10 @@ public class OutputView {
     }
 
     public void showNumberRange(int min, int max) {
+        System.out.print(PREFIX_RANGE.getMessage() + min + DELIMITER_RANGE.getMessage() + max + SUFFIX_RANGE.getMessage() + DELIMITER.getMessage());
+    }
+
+    public void showCharRange(char min, char max) {
         System.out.print(PREFIX_RANGE.getMessage() + min + DELIMITER_RANGE.getMessage() + max + SUFFIX_RANGE.getMessage() + DELIMITER.getMessage());
     }
 }
