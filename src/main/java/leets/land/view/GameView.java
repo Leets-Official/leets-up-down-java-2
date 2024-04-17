@@ -16,9 +16,9 @@ public class GameView {
     return sc.nextInt();
   }
 
-  public String getAlphabetInput() {
+  public char getAlphabetInput() {
     Scanner sc = new Scanner(System.in);
     System.out.print("영어를 입력해주세요(A ~ z) : ");
-    return sc.next();
+    return sc.next().charAt(0);
   }
 }
