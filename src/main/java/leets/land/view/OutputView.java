@@ -9,7 +9,7 @@ public class OutputView {
         System.out.println(result);
     }
 
-    public void printAttempt(int attempt){
-        System.out.print("\n시도한 횟수 : " + attempt);
+    public void printCount(int count){
+        System.out.println("\n시도한 횟수 : " + count);
     }
 }

@@ -13,21 +13,11 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public int getNumberFirstInput(){
-        System.out.print("숫자를 입력해주세요(1 ~ 100) : ");
-        return scanner.nextInt();
-    }
-
-    public char getAlphabetFirstInput(){
-        System.out.print("영어를 입력해주세요(A ~ z) : ");
-        return scanner.next().charAt(0);
-    }
-
     public int getNextNumberGuess(int min, int max){
         System.out.printf("숫자를 입력해주세요(%d ~ %d) : ",min ,max);
         return scanner.nextInt();
     }
-    public int getNextAlphabetGuess(char min, char max){
+    public char getNextAlphabetGuess(char min, char max){
         System.out.printf("영어를 입력해주세요(%c ~ %c) : ",min ,max);
         return scanner.next().charAt(0);
     }
