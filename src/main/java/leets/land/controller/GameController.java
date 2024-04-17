@@ -24,6 +24,9 @@ public class GameController {
       numericPlay();
     } else if (version == 2) {
       alphabetPlay();
+    } else {
+      System.out.println("[ERROR] 존재하지 않는 버전입니다.");
+      play();
     }
   }
 
