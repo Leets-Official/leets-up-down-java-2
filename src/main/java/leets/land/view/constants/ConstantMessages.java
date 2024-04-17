@@ -11,7 +11,7 @@ public enum ConstantMessages {
     DOWN("DOWN"),
     CORRECT("정답!"),
     TRY_COUNT("시도한 횟수 : "),
-    ERROR_INVALID_GAME_VERSION("[ERROR] 존재하지 않는 버전입니다."),
+    ERROR_INVALID_GAME_VERSION("[ERROR] 존재하지 않는 버전입니다. 1 또는 2를 입력해주세요."),
     ERROR_INVALID_RANGE_VALUE("[ERROR] 범위 내의 숫자를 입력하세요."),
     ERROR_INVALID_RANGE_CHAR("[ERROR] 범위 내의 알파벳을 입력하세요."),
     ERROR_INVALID_INPUT_TYPE("[ERROR] 입력 문자의 타입이 맞지 않습니다.");

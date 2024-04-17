@@ -10,15 +10,15 @@ public class OutputView {
     }
 
     public void showGameVersion() {
-        System.out.println(GAME_VERSION.getMessage());
+        System.out.print(GAME_VERSION.getMessage());
     }
 
     public void showInsertValue() {
-        System.out.println(INSERT_VALUE.getMessage());
+        System.out.print(INSERT_VALUE.getMessage());
     }
 
     public void showInsertChar() {
-        System.out.println(INSERT_CHAR.getMessage());
+        System.out.print(INSERT_CHAR.getMessage());
     }
 
     public void showUp() {
