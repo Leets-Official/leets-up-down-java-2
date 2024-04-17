@@ -18,34 +18,46 @@ public class NumberVersionController {
         int tryCount = 0;
         int answer = service.setRandomNumber(min, max);
 
-
         while (true) {
             int number = getNumber();
-
             tryCount++;
 
-            if (service.checkAnswer(answer, number)) {
-                outputView.showCorrect();
+            if (checkAnswer(answer, number)){
                 break;
             }
 
-            if (service.calcIsNumberUp(answer, number)) {
-                outputView.showUp();
-                continue;
-            }
-            outputView.showDown();
+            changeRange(checkIsNumberUp(answer, number), number);
         }
         return tryCount;
     }
 
+    private void changeRange(boolean isUp, int number) {
+        if (isUp) {
+            outputView.showUp();
+            min = number + 1;
+            return;
+        }
+        max = number - 1;
+        outputView.showDown();
+    }
+
+    private boolean checkIsNumberUp(int answer, int number) {
+        return service.calcIsNumberUp(answer, number);
+    }
+
+    private boolean checkAnswer(int answer, int number) {
+        if (service.checkAnswer(answer, number)) {
+            outputView.showCorrect();
+            return true;
+        }
+        return false;
+    }
+
     private int getNumber() throws IOException {
-        InputView inputView = new InputView();
         Validator validator = new Validator();
 
         while (true) {
-            outputView.showInsertValue();
-            outputView.showNumberRange(min, max);
-            String input = inputView.getInput();
+            String input = getInput();
 
             if (validator.isInputNumber(input)) {
                 if (service.checkRange(input, min, max)) {
@@ -54,5 +66,13 @@ public class NumberVersionController {
                 outputView.showInvalidValueRange();
             }
         }
+    }
+
+    private String getInput() throws IOException {
+        InputView inputView = new InputView();
+
+        outputView.showInsertValue();
+        outputView.showNumberRange(min, max);
+        return inputView.getInput();
     }
 }

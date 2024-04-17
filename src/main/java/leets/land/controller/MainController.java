@@ -14,18 +14,19 @@ public class MainController {
     private final MainService service = new MainService();
 
     public void run() throws IOException {
-        int tryCount;
+        int tryCount = 0;
         gameStart();
+
         if (gameVersion == 1) {
             NumberVersionController controller = new NumberVersionController();
             tryCount = controller.run();
-            System.out.println(tryCount);
-            return;
         }
+
         if (gameVersion == 2) {
             CharVersionController controller = new CharVersionController();
-            controller.run();
+            tryCount = controller.run();
         }
+        output.showTryCount(tryCount);
     }
 
     private void gameStart() throws IOException {
