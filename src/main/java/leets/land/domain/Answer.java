@@ -16,9 +16,9 @@ public class Answer {
     public Answer(String version) throws InvalidInputException {
         new VersionValidator().validate(version);
 
-        if (Integer.parseInt(version) == NUMBER_VERSION.getValue()) {
+        if (Integer.parseInt(version) == NUMBER_VERSION.getValue())
             this.version = NUMBER_VERSION;
-        } else
+        else
             this.version = ENGLISH_VERSION;
         this.answer = generateRandomAnswer();
     }
