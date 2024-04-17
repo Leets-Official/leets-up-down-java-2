@@ -10,8 +10,6 @@ import java.io.IOException;
 public class MainController {
     private int gameVersion;
     private final OutputView output = new OutputView();
-    private final Validator validator = new Validator();
-    private final MainService service = new MainService();
 
     public void run() throws IOException {
         int tryCount = 0;
@@ -30,7 +28,10 @@ public class MainController {
     }
 
     private void gameStart() throws IOException {
+        Validator validator = new Validator();
+        MainService service = new MainService();
         InputView inputView = new InputView();
+
         output.showIntro();
 
         while (true) {
