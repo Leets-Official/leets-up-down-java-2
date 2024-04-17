@@ -45,3 +45,9 @@
   - test: 테스트 추가 또는 수정
   - chore: 빌드 프로세스, CI 구성 등이 변경됩니다.
 
+[실제구현]
+- InputView와 OutputView로 View를 구성
+- InputView에서 프로그램 구동에 필요한 입력을 받아 GameController로 전달
+- GameController에서는 게임 버전을 구분해 숫자 버전, 영어 버전을 따로 호출해서 게임 진행, OutputView에 Count를 전달해 출력
+- Domain에는 내용이 들어갈 필요가 없어 보임
+- 게임을 버전별로 구분해 따로 패키지를 구성하고 싶은데 더 고민해보겠음
