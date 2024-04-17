@@ -3,6 +3,7 @@ package leets.land.controller;
 import leets.land.view.InputView;
 import leets.land.view.OutputView;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameController {
@@ -15,7 +16,6 @@ public class GameController {
     public void runApp(){
         outputView.printStartMessage();
         int versionNum = inputView.inputVersionNum();
-
         if(versionNum == 1){
             int randomNum = generateRandomNum();
             int count = numUpdownGame(randomNum);
@@ -44,7 +44,6 @@ public class GameController {
         while(!isCorrect){
             System.out.print("정답을 입력하세요(" + low + "~" + high + ") : ");
             inputNum = inputNum(low, high);
-            checkValidNumRange(low, high, inputNum);
             count++;
 
             if(inputNum == targetNum){
@@ -60,19 +59,27 @@ public class GameController {
         }
         return count;
     }
+
+    //입력 범위를 벗어난 입력이 들어오면 예외 날리기
     public void checkValidNumRange(int low, int high, int inputNum){
         if((inputNum<low)||(inputNum>high)){
             throw new IllegalArgumentException("[ERROR] 범위 내의 숫자를 입력하세요.");
         }
     }
 
+    //사용자에게 입력을 받으며 예외처리
     public int inputNum(int low, int high){
-        int inputNum;
+
         try{
-            inputNum = scanner.nextInt();
+            int inputNum = scanner.nextInt();
             checkValidNumRange(low, high, inputNum);
             return inputNum;
         } catch (IllegalArgumentException e){
+            System.out.print(low + "~" + high + " 내의 숫자를 입력하세요: ");
+            return inputNum(low, high);
+        } catch (InputMismatchException e){
+            System.out.print("숫자를 입력하세요");
+            scanner.nextLine();// 개행문제 비워주기. 안 하면 StackOverFlow
             return inputNum(low, high);
         }
     }
