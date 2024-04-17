@@ -31,4 +31,12 @@ class InputViewTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, ()->
                 inputView.checkValidNumRange(50,100, 20) );
     }
+
+    @Test
+    void 영어_입력_범위_확인(){
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,  ()->
+                inputView.checkValidCharRange('a', 'c', 's'));
+    }
+
+
 }
