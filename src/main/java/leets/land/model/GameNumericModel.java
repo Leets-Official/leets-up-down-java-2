@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class GameNumericModel {
 
-  private final int answer = (int) (Math.random() * 100);
+  private final int answer = (int) (Math.random() * 100) + 1;
   private static int count;
   private int min = 1;
   private int max = 100;
