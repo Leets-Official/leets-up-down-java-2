@@ -19,9 +19,7 @@ public class GameNumericModel {
 
     min = input + 1;
 
-    Scanner sc = new Scanner(System.in);
-    System.out.print("숫자를 입력해주세요(" + min + " ~ " + max + ") : ");
-    return sc.nextInt();
+    return isValidNumericRange();
   }
 
   public boolean down(int input) {
@@ -33,9 +31,8 @@ public class GameNumericModel {
     count++;
 
     max = input - 1;
-    Scanner sc = new Scanner(System.in);
-    System.out.print("숫자를 입력해주세요(" + min + " ~ " + max + ") : ");
-    return sc.nextInt();
+
+    return isValidNumericRange();
   }
 
   public boolean isCorrect(int input) {
@@ -44,5 +41,20 @@ public class GameNumericModel {
 
   public static int getCount() {
     return count;
+  }
+
+  private int isValidNumericRange() {
+    Scanner sc = new Scanner(System.in);
+
+    while (true) {
+      System.out.print("숫자를 입력해주세요(" + min + " ~ " + max + ") : ");
+      int newInput = sc.nextInt();
+
+      if (newInput < min || newInput > max) {
+        System.out.println("[ERROR] 범위 내의 숫자를 입력하세요.");
+      } else {
+        return newInput;
+      }
+    }
   }
 }
