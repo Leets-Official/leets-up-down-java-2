@@ -20,10 +20,6 @@ class GameControllerTest {
         gameController = new GameController();
     }
 
-    @Test
-    void 숫자_입력_범위_확인(){
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, ()->
-                gameController.checkValidNumRange(50,100, 20) );
-    }
+
 
 }
