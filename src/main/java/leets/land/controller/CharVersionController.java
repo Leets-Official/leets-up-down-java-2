@@ -34,7 +34,15 @@ public class CharVersionController {
     private void changeRange(boolean isUp, char value) {
         if (isUp) {
             outputView.showUp();
+            if (value == 90) {
+                min = (char) (97);
+                return;
+            }
             min = (char) (value + 1);
+            return;
+        }
+        if (value == 97) {
+            max = (char) (90);
             return;
         }
         max = (char) (value - 1);

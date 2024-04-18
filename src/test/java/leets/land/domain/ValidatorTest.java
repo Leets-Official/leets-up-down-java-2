@@ -34,15 +34,9 @@ class ValidatorTest {
         assertThat(validator.isInputNumber(input)).isFalse();
     }
 
-    @ValueSource(strings = {"a", "b", "c"})
+    @ValueSource(strings = {"a", "b", "c", "A", "Z"})
     @ParameterizedTest
-    void isInputCharWithChars(String input) {
+    void isInputCharWithValids(String input) {
         assertThat(validator.isInputChar(input)).isTrue();
-    }
-
-    @ValueSource(strings = {"A", "Z"})
-    @ParameterizedTest
-    void isInputCharWithInvalids(String input) {
-        assertThat(validator.isInputChar(input)).isFalse();
     }
 }

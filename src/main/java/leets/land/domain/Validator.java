@@ -15,9 +15,14 @@ public class Validator {
         return true;
     }
 
-    public boolean isInputChar(String input) {
+    public boolean isInputLowerChar(String input) {
         int charValue = input.charAt(0);
-        return charValue >= 65 && charValue <= 122;
+        return charValue >= 97 && charValue <= 122;
+    }
+
+    public boolean isInputCapitalChar(String input) {
+        int charValue = input.charAt(0);
+        return charValue >= 65 && charValue <= 90;
     }
 
     public boolean checkInputTypeForNumberVersion(String input) {
@@ -26,5 +31,9 @@ public class Validator {
 
     public boolean checkInputTypeForCharVersion(String input) {
         return input.isBlank() || input.length() != 1;
+    }
+
+    public boolean isInputChar(String input) {
+        return isInputCapitalChar(input) || isInputLowerChar(input);
     }
 }

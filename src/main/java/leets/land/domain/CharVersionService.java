@@ -3,7 +3,11 @@ package leets.land.domain;
 public class CharVersionService {
 
     public char setRandomChar() {
-        return (char) ((Math.random() * 26) + 65);
+        boolean isUpperCase = Math.random() < 0.5;
+        if (isUpperCase) {
+            return (char) ((Math.random() * 26) + 65);
+        }
+        return (char) ((Math.random() * 26) + 97);
     }
 
     public char getChar(String input) {
