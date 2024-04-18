@@ -6,6 +6,7 @@ import java.util.Random;
 public class UpdownApplication {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static int tryCnt = 0;
 
 	public static void main(String[] args) throws Exception {
 
@@ -36,9 +37,10 @@ public class UpdownApplication {
 		Random random = new Random();
 		int answer = random.nextInt(max - min + 1) + min;
 
+		//정답 맞출때까지 게임 진행
 		boolean isCorrect = false;
-		int tryCnt = 0;
 		while(!isCorrect){
+			tryCnt += 1;
 			int userInput = getUserInput(min, max);
 
 			if(userInput == answer){
@@ -54,8 +56,39 @@ public class UpdownApplication {
 	}
 
 	//입력 조건을 확인면서 입력 받기
-	private static int getUserInput(int min, int max) {
-		return 0;
+	private static int getUserInput(int min, int max) throws IOException{
+		int userInput = 0;
+		boolean isValidInput = false;
+
+		while(!isValidInput){
+			try{
+         		System.out.print("숫자를 입력해주세요(" + min + " ~ " + max + ") : ");
+         		userInput = Integer.parseInt(br.readLine());
+
+				 if(IsRightValue(min,max,userInput)){
+					isValidInput = true;
+				 } 
+				 else{
+					 tryCnt += 1;
+					System.out.println("[ERROR] 범위 내의 숫자를 입력하세요.");
+				 }
+      		}
+			catch (NumberFormatException e){
+				tryCnt += 1;
+				System.out.println("[ERROR] 입력 문자의 타입이 맞지 않습니다.");
+			}
+
+        }
+		
+		return userInput;
+	}
+
+	//값이 범위 내에 있는지 확인
+	private static boolean IsRightValue(int min, int max, int value) {
+		if (min <= value && value <= max){
+			return true;
+		}
+		return false;
 	}
 
 	//사용자의 입력값을 판단하여 up or down 출력
