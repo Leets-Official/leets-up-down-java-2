@@ -1,8 +1,11 @@
 package leets.land;
 
+import leets.land.controller.GameController;
+
 public class UpdownApplication {
 
 	public static void main(String[] args) {
-		System.out.print("hihi :D");
+		GameController gameController = new GameController();
+		gameController.startGame();
 	}
 }
