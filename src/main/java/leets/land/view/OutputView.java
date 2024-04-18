@@ -12,4 +12,8 @@ public class OutputView {
     public void printCount(int count){
         System.out.println("\n시도한 횟수 : " + count);
     }
+
+    public void printErrorMessage(String message) {
+        System.out.println("[ERROR] " + message);
+    }
 }
