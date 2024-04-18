@@ -7,6 +7,9 @@ public class UpdownApplication {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static int tryCnt = 0;
+	static int min = 1;
+	static int max = 100;
+	static int answer = 0;
 
 	public static void main(String[] args) throws Exception {
 
@@ -29,19 +32,15 @@ public class UpdownApplication {
 	}
 
 	private static void UpdownNumber() throws IOException {
-
-		int min = 1;
-		int max = 100;
-
 		// 랜덤 정답 생성
 		Random random = new Random();
-		int answer = random.nextInt(max - min + 1) + min;
+		answer = random.nextInt(max - min + 1) + min;
 
 		//정답 맞출때까지 게임 진행
 		boolean isCorrect = false;
 		while(!isCorrect){
 			tryCnt += 1;
-			int userInput = getUserInput(min, max);
+			int userInput = getUserInput();
 
 			if(userInput == answer){
 				System.out.println("정답!");
@@ -56,7 +55,7 @@ public class UpdownApplication {
 	}
 
 	//입력 조건을 확인면서 입력 받기
-	private static int getUserInput(int min, int max) throws IOException{
+	private static int getUserInput() throws IOException{
 		int userInput = 0;
 		boolean isValidInput = false;
 
@@ -65,7 +64,7 @@ public class UpdownApplication {
          		System.out.print("숫자를 입력해주세요(" + min + " ~ " + max + ") : ");
          		userInput = Integer.parseInt(br.readLine());
 
-				 if(IsRightValue(min,max,userInput)){
+				 if(IsRightValue(userInput)){
 					isValidInput = true;
 				 } 
 				 else{
@@ -84,7 +83,7 @@ public class UpdownApplication {
 	}
 
 	//값이 범위 내에 있는지 확인
-	private static boolean IsRightValue(int min, int max, int value) {
+	private static boolean IsRightValue(int value) {
 		if (min <= value && value <= max){
 			return true;
 		}
@@ -93,7 +92,14 @@ public class UpdownApplication {
 
 	//사용자의 입력값을 판단하여 up or down 출력
 	private static void checkRange(int userInput){
-
+		if(userInput > answer){
+			System.out.println("DOWN");
+			max = userInput-1;
+		}
+		else if(userInput < answer){
+			System.out.println("UP");
+			min = userInput+1;
+		}
 	}
 
 
