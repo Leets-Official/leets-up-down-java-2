@@ -25,9 +25,7 @@ public class GameAlphabetModel {
 
     min = (char) (input + 1);
 
-    Scanner sc = new Scanner(System.in);
-    System.out.print("영어를 입력해주세요(" + min + " ~ " + max + ") : ");
-    return sc.next().charAt(0);
+    return isValidAlphabetRange();
   }
 
   public boolean down(int input) {
@@ -44,9 +42,7 @@ public class GameAlphabetModel {
       max = (char) (input - 1);
     }
 
-    Scanner sc = new Scanner(System.in);
-    System.out.print("영어를 입력해주세요(" + min + " ~ " + max + ") : ");
-    return sc.next().charAt(0);
+    return isValidAlphabetRange();
   }
 
   public boolean isCorrect(int input) {
@@ -55,5 +51,20 @@ public class GameAlphabetModel {
 
   public static int getCount() {
     return count;
+  }
+
+  private char isValidAlphabetRange() {
+    Scanner sc = new Scanner(System.in);
+
+    while (true) {
+      System.out.print("영어를 입력해주세요(" + min + " ~ " + max + ") : ");
+      char newInput = sc.next().charAt(0);
+
+      if (newInput < min || newInput > max) {
+        System.out.println("[ERROR] 범위 내의 알파벳을 입력하세요.");
+      } else {
+        return newInput;
+      }
+    }
   }
 }
