@@ -33,7 +33,7 @@ public class InputView {
      */
     public void validVersionNum(int versionNum){
         if(versionNum!=1&&versionNum!=2){
-            throw new IllegalArgumentException("버전은 1 또는 2만 입력해주세요. (숫자: 1, 영어: 2): ");
+            throw new IllegalArgumentException("[ERROR] 버전은 1 또는 2만 입력해주세요. (숫자: 1, 영어: 2): ");
         }
     }
 
