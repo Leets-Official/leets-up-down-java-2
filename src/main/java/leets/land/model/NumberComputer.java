@@ -40,4 +40,9 @@ public class NumberComputer {
     public boolean correct(int input) {
         return answer == input;
     }
+
+    public boolean isValidInput(int input){
+        return input >= min && input <= max;
+
+    }
 }

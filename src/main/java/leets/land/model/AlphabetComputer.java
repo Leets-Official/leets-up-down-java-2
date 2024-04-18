@@ -1,5 +1,7 @@
 package leets.land.model;
 
+import java.util.regex.Pattern;
+
 public class AlphabetComputer {
 
     private static char answer = (char) (Math.random() * ('z'-'A'+1) + 'A');
@@ -20,19 +22,23 @@ public class AlphabetComputer {
     }
     public void judgeUp(char input) {
         count++;
-        if (input == 'Z') {
-            min = 'a';
+        if (input == 'z') {
+            max = 'z';
+            min = 'A';
         } else {
-            max = (char) (input - 1);
+            min = (char) (input + 1);
+            max = 'z';
         }
     }
 
     public void judgeDown(char input) {
         count++;
-        if (input == 'a') {
-            max = 'Z';
+        if (input == 'A') {
+            min = 'A';
+            max = 'z';
         } else {
             max = (char) (input - 1);
+            min = 'A';
         }
     }
 
@@ -47,4 +53,9 @@ public class AlphabetComputer {
     public boolean correct(char input) {
         return answer == input;
     }
+
+    public boolean isValidInput(char input) {
+        return input >= min && input <= max;
+    }
+
 }
