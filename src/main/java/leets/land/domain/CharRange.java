@@ -1,4 +1,4 @@
-package leets.land.view;
+package leets.land.domain;
 
 public class CharRange {
     private char min;
@@ -23,5 +23,9 @@ public class CharRange {
 
     public void setMax(char max) {
         this.max = max;
+    }
+
+    public boolean isInRange(char value) {
+        return value >= min && value <= max;
     }
 }

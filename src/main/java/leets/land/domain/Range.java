@@ -1,4 +1,4 @@
-package leets.land;
+package leets.land.domain;
 
 public class Range {
     private int min;
@@ -13,15 +13,19 @@ public class Range {
         return min;
     }
 
-    public int getMax() {
-        return max;
-    }
-
     public void setMin(int min) {
         this.min = min;
     }
 
+    public int getMax() {
+        return max;
+    }
+
     public void setMax(int max) {
         this.max = max;
+    }
+
+    public boolean isInRange(int value) {
+        return value >= min && value <= max;
     }
 }

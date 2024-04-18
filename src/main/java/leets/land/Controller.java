@@ -1,15 +1,15 @@
 package leets.land;
 
-import leets.land.view.CharRange;
+import leets.land.domain.Range;
+import leets.land.domain.CharRange;
 import leets.land.view.InputView;
 import leets.land.view.OutputView;
 
 public class Controller {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final UpNumberVersion upNumberVersion = new UpNumberVersion();
     public void run() {
-        int version = inputView.versionInput();
+        int version = inputView.getVersionInput();
         if (version == 1) {
             numberVersion();
         } else {
@@ -23,7 +23,7 @@ public class Controller {
         int correct = -1;
         Range range = new Range(1, 100);
         while (correct != randomNumber) {
-            correct = inputView.readNumber(range);
+            correct = inputView.getNumberInput(range);
             printUpDown(correct, randomNumber, range); // Call printUpDown function
             cnt ++;
         }
@@ -46,7 +46,7 @@ public class Controller {
         char correct = 'A'-1;
         CharRange range = new CharRange('A', 'z');
         while (correct != randomAlpha) {
-            correct = inputView.readAlpha(range);
+            correct = inputView.getCharInput(range);
             printUpDown(correct, randomAlpha, range);
             cnt ++;
         }
