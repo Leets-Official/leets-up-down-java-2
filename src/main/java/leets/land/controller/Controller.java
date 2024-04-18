@@ -20,13 +20,17 @@ public class Controller {
         }else if( version == 2) {
             alphabetPlay();
         }else{
-            System.out.println("[ERROR] 존재하지 않는 버전입니다.");
+            outputView.printErrorMessage("존재하지 않는 버전입니다.");
             play();
         }
     }
     public void numberPlay(){
         while (true){
             int input = inputView.getNextNumberGuess(numberComputer.getMin(), numberComputer.getMax());
+            if (!numberComputer.isValidInput(input)) {
+                outputView.printErrorMessage("범위 내의 숫자를 입력하세요.");
+                continue;
+            }
             if(numberComputer.up(input)){
                 numberComputer.judgeUp(input);
                 outputView.printUpDownResult("UP");
@@ -44,17 +48,23 @@ public class Controller {
     public void alphabetPlay(){
         while (true){
             char input = inputView.getNextAlphabetGuess(alphabetComputer.getMin(), alphabetComputer.getMax());
+            if (!alphabetComputer.isValidInput(input)) {
+                outputView.printErrorMessage("범위 내의 알파벳을 입력하세요.");
+                continue;
+            }
+
             if(alphabetComputer.up(input)){
                 alphabetComputer.judgeUp(input);
                 outputView.printUpDownResult("UP");
-            }else if(alphabetComputer.down(input)){
+            } else if(alphabetComputer.down(input)){
                 alphabetComputer.judgeDown(input);
                 outputView.printUpDownResult("DOWN");
-            }else if(alphabetComputer.correct(input)){
+            } else if(alphabetComputer.correct(input)){
                 outputView.printUpDownResult("정답 !");
                 outputView.printCount(alphabetComputer.getCount());
                 break;
             }
         }
+
     }
 }
