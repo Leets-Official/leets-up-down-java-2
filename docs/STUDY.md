@@ -49,7 +49,7 @@
 - InputView와 OutputView로 View를 구성
 - InputView에서 프로그램 구동에 필요한 입력을 받아 GameController로 전달
 - GameController에서는 게임 버전을 구분해 숫자 버전, 영어 버전을 따로 호출해서 게임 진행, OutputView에 Count를 전달해 출력
-- Domain에는 내용이 들어갈 필요가 없어 보임
-- 게임을 버전별로 구분해 따로 패키지를 구성하고 싶은데 더 고민해보겠음
+- Domain에 뭐가 들어가야할 지 모르겠음.
+- 게임을 버전별로 구분해 따로 패키지를 구성하고 싶은데 더 고민해보겠음 -> 입력이 반복되는 데 계속 객체로 넘겨주는 게 오히려 일하는 단계를 늘리느 느낌
 - 로직 테스트. 
-- view - controller - game의 3층 구조는 비효율 적인 거 같아 game 로직을 controller에 구현하고, match 해주는 컨트롤러를 따로 구성하였음
+- view - controller - game의 3층 구조는 비효율 적인 거 같아 game 로직을 controller에 구현하고, match 해주는 컨트롤러를 따로 구성하였음 
