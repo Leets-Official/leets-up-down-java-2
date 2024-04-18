@@ -6,9 +6,9 @@ public class Answer {
     }
 
     public static char setAlphabet() {
-        char answer = (char) ((int) (Math.random() * 52) + 'A');
+        char answer = (char) ((int) (Math.random() * ('z'-'A'+1)) + 'A');
 
-        if (answer > 'z' || answer < 'A') {
+        if (answer > 'Z' && answer < 'a') {
             return setAlphabet();
         }
 
