@@ -3,7 +3,7 @@ package leets.land.domain;
 public class CharVersionService {
 
     public char setRandomChar() {
-        return (char) ((Math.random() * 26) + 97);
+        return (char) ((Math.random() * 26) + 65);
     }
 
     public char getChar(String input) {

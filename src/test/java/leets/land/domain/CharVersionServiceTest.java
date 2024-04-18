@@ -16,7 +16,7 @@ class CharVersionServiceTest {
     @Test
     void setRandomChar() {
         char randomChar = charVersionService.setRandomChar();
-        assertThat(randomChar).isGreaterThanOrEqualTo('a').isLessThanOrEqualTo('z');
+        assertThat(randomChar).isGreaterThanOrEqualTo('A').isLessThanOrEqualTo('z');
     }
 
     @Test

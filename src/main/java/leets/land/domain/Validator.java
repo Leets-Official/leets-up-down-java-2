@@ -17,7 +17,7 @@ public class Validator {
 
     public boolean isInputChar(String input) {
         int charValue = input.charAt(0);
-        return charValue >= 97 && charValue <= 122;
+        return charValue >= 65 && charValue <= 122;
     }
 
     public boolean checkInputTypeForNumberVersion(String input) {

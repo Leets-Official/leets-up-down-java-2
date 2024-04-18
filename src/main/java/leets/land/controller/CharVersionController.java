@@ -8,7 +8,7 @@ import leets.land.view.OutputView;
 import java.io.IOException;
 
 public class CharVersionController {
-    private char min = 'a';
+    private char min = 'A';
     private char max = 'z';
 
     private final OutputView outputView = new OutputView();
