@@ -1,8 +1,8 @@
-package leets.land.game;
+package leets.land.controller;
 
 import leets.land.view.InputView;
 
-public class Numgame implements Game {
+public class NumgameController implements GameController {
     private final InputView inputView = new InputView();
 
     @Override

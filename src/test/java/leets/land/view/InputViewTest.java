@@ -1,7 +1,5 @@
 package leets.land.view;
 
-import leets.land.UpdownApplication;
-import leets.land.controller.GameController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

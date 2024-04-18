@@ -1,8 +1,8 @@
-package leets.land.game;
+package leets.land.controller;
 
 import leets.land.view.InputView;
 
-public class AlphabetGame implements Game {
+public class AlphabetGameController implements GameController {
 
     private final InputView inputView = new InputView();
 

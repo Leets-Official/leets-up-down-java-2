@@ -1,26 +1,26 @@
 package leets.land.game;
 
-import org.assertj.core.api.Assertions;
+import leets.land.controller.AlphabetGameController;
+import leets.land.controller.GameController;
+import leets.land.controller.NumgameController;
 import org.junit.jupiter.api.Test;
-
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.*;
 
-class GameTest {
+class GameControllerTest {
 
 
 
     @Test
     void 난수_범위_확인(){
-        Game game = new Numgame();
-        assertThat(game.generateRandomVal()).isBetween(1, 100);
+        GameController gameController = new NumgameController();
+        assertThat(gameController.generateRandomVal()).isBetween(1, 100);
     }
 
     @Test
     void 랜덤_알파벳_범위_확인() {
-        Game game = new AlphabetGame();
-        int randomValue = game.generateRandomVal();
+        GameController gameController = new AlphabetGameController();
+        int randomValue = gameController.generateRandomVal();
         assertThat(randomValue)
                 .satisfiesAnyOf(
                         value -> assertThat(value).isBetween(65, 90),
