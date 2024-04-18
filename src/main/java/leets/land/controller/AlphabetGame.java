@@ -5,7 +5,7 @@ import leets.land.domain.UpDown;
 import leets.land.view.InputView;
 import leets.land.view.OutputView;
 
-public class AlphabetGame implements Game{
+public class AlphabetGame implements Game {
     final InputView inputView = new InputView();
     final OutputView outputView = new OutputView();
 
@@ -17,10 +17,12 @@ public class AlphabetGame implements Game{
 
     @Override
     public void play(UpDown updown) {
+        char answer = updown.getAnswerAsChar();
+
         while (true) {
             char alphabet = inputView.inputAlphabetInRange(updown.getStartAsChar(), updown.getEndAsChar());
 
-            try{
+            try {
                 updown.validator(alphabet);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -29,10 +31,11 @@ public class AlphabetGame implements Game{
 
             updown.increaseCount();
 
-            if (alphabet == updown.getAnswerAsChar()) {
+            if (alphabet == answer) {
+                System.out.println("Correct!");
                 outputView.printCount(updown.getCount());
                 break;
-            } else if (alphabet < updown.getAnswerAsChar()) {
+            } else if (alphabet < answer) {
                 System.out.println("UP");
                 updown.setStart(alphabet + 1);
             } else {
