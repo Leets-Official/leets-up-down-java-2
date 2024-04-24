@@ -1,8 +1,10 @@
 package leets.land;
 
-public class UpdownApplication {
+import leets.land.controller.GameLoader;
 
-	public static void main(String[] args) {
-		System.out.print("hihi :D");
-	}
+public class UpdownApplication {
+    public static void main(String[] args) {
+        GameLoader gameLoader = new GameLoader();
+        gameLoader.load();
+    }
 }
