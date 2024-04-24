@@ -1,12 +1,12 @@
-package leets.land.domain;
+package leets.land.v1.domain;
 
-import leets.land.validation.exception.InvalidInputException;
-import leets.land.validation.validator.VersionValidator;
+import leets.land.v1.validation.exception.InvalidInputException;
+import leets.land.v1.validation.validator.VersionValidator;
 
 import java.util.Random;
 
-import static leets.land.domain.Version.ENGLISH_VERSION;
-import static leets.land.domain.Version.NUMBER_VERSION;
+import static leets.land.v1.domain.Version.ENGLISH_VERSION;
+import static leets.land.v1.domain.Version.NUMBER_VERSION;
 
 public class Answer {
 

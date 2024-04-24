@@ -1,6 +1,7 @@
 package leets.land.validation.validator;
 
-import leets.land.validation.exception.InvalidInputException;
+import leets.land.v1.validation.exception.InvalidInputException;
+import leets.land.v1.validation.validator.VersionValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

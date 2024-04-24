@@ -1,7 +1,8 @@
 package leets.land;
 
-import leets.land.controller.UpDownApplication;
-import leets.land.validation.exception.InvalidInputException;
+import leets.land.v1.UpDownApplication;
+import leets.land.v1.validation.exception.InvalidInputException;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ class UpDownApplicationTests {
 
 		BufferedReader bufferedReaderMock = Mockito.mock(BufferedReader.class);
 		when(bufferedReaderMock.readLine()).thenReturn(emptyInput);
-		app.setBr(bufferedReaderMock);
+		app.setBufferedReader(bufferedReaderMock);
 
 		assertThrows(InvalidInputException.class, () -> app.read(0));
 	}

@@ -1,30 +1,29 @@
-package leets.land.controller;
+package leets.land.v1;
 
-import leets.land.domain.Answer;
-import leets.land.domain.Range;
-import leets.land.domain.Trial;
-import leets.land.validation.exception.InvalidInputException;
+import leets.land.v1.domain.Answer;
+import leets.land.v1.domain.Range;
+import leets.land.v1.domain.Trial;
+import leets.land.v1.validation.exception.InvalidInputException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Optional;
 
-import static leets.land.domain.Version.NUMBER_VERSION;
+import static leets.land.v1.domain.Version.NUMBER_VERSION;
 
 public class UpDownApplication {
 
-	private static final boolean UNTIL_CORRECT = true;
+	private static final boolean IS_CONTINUE = true;
 	private static final int MAX_ERROR_COUNT = 5;
-	private static final int INIT_ERROR_COUNT = 0;
 
-	private static Answer answer;
-	private static final Range range = new Range();
-	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	private Answer answer;
+	private final Range range = new Range();
+	private static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
 	// 테스트를 위한 Setter
-	public static void setBr(BufferedReader br) {
-		UpDownApplication.br = br;
+	public static void setBufferedReader(BufferedReader bufferedReader) {
+		UpDownApplication.bufferedReader = bufferedReader;
 	}
 
 	public static void main(String[] args) {
@@ -37,8 +36,10 @@ public class UpDownApplication {
 					업다운 게임을 시작합니다.
 					     
 					버전을 입력해주세요 (숫자 버전: 1, 영어 버전: 2):\s""");
-		init(INIT_ERROR_COUNT);	// Answer 생성
-		guess(INIT_ERROR_COUNT); // 게임 시작 + 결과 출력
+
+		int errorCnt = 0;
+		init(errorCnt);	// Answer 생성
+		guessUntilCorrect(); // 게임 시작 + 결과 출력
 	}
 
 	public void init(int errorCnt) {
@@ -57,8 +58,8 @@ public class UpDownApplication {
 			if (errorCnt >= MAX_ERROR_COUNT)
 				throw new InvalidInputException("[ERROR] 5회 이상 잘못 입력하셨습니다.\n프로그램을 종료합니다.");
 
-			return Optional.of(br.readLine())
-					.filter(input -> !input.trim().isEmpty())
+			return Optional.of(bufferedReader.readLine())
+					.filter(input -> !input.isBlank())
 					.orElseThrow(() -> new InvalidInputException("[ERROR] 값을 입력해주세요: "));
 		} catch (InvalidInputException e) {
 			System.out.print(e.getMessage());
@@ -75,8 +76,10 @@ public class UpDownApplication {
 	}
 
 	// 비즈니스 로직
-	public void guess(int errorCnt) {
-		while (UNTIL_CORRECT) {
+	public void guessUntilCorrect() {
+		int errorCnt = 0;
+
+		while (IS_CONTINUE) {
 			try {
 				System.out.print(answer.getVersion().getName() + "를 입력해주세요(" + range.getBottom() + " ~ " + range.getTop() +"): ");
 				Trial trial = Trial.getInstance().init(answer.getVersion(), read(errorCnt), range);
@@ -104,7 +107,7 @@ public class UpDownApplication {
 		}
 	}
 
-	private static void initRange() {
+	private void initRange() {
 		if(answer.getVersion() == NUMBER_VERSION) {
 			range.setBottom("1");
 			range.setTop("100");

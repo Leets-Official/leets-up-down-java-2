@@ -1,4 +1,6 @@
-package leets.land.domain;
+package leets.land.v2.domain;
+
+import java.util.Arrays;
 
 public enum Version {
     NUMBER_VERSION(1, "숫자"),
@@ -12,6 +14,13 @@ public enum Version {
         this.name = name;
     }
 
+    public static Version getVersion(int version) {
+        return Arrays.stream(values())
+                .filter(gameVersion -> gameVersion.value == version)
+                .findFirst()
+                .get();
+    }
+
     public int getValue() {
         return value;
     }
@@ -19,4 +28,5 @@ public enum Version {
     public String getName() {
         return name;
     }
+
 }

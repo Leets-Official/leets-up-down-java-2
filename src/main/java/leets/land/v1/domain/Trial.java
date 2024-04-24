@@ -1,7 +1,7 @@
-package leets.land.domain;
+package leets.land.v1.domain;
 
-import leets.land.validation.exception.InvalidInputException;
-import leets.land.validation.validator.TrialValidator;
+import leets.land.v1.validation.exception.InvalidInputException;
+import leets.land.v1.validation.validator.TrialValidator;
 
 public class Trial {
 

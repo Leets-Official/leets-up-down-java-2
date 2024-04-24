@@ -1,4 +1,4 @@
-package leets.land.domain;
+package leets.land.v1.domain;
 
 public class Range {
 

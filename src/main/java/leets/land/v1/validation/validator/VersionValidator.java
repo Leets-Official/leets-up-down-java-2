@@ -1,8 +1,8 @@
-package leets.land.validation.validator;
+package leets.land.v1.validation.validator;
 
-import leets.land.validation.constraint.Constraint;
-import leets.land.validation.constraint.InvalidVersionConstraint;
-import leets.land.validation.exception.InvalidInputException;
+import leets.land.v1.validation.constraint.Constraint;
+import leets.land.v1.validation.exception.InvalidInputException;
+import leets.land.v1.validation.constraint.InvalidVersionConstraint;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class VersionValidator {
 
     public void validate(Object value) throws InvalidInputException {
         for (Constraint<String> constraint : constraints) {
-            constraint.isValid(value.toString());
+            constraint.checkValidation(value.toString());
         }
     }
 }

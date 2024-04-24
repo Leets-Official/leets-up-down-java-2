@@ -1,7 +1,7 @@
-package leets.land.validation.constraint;
+package leets.land.v1.validation.constraint;
 
-import leets.land.domain.Range;
-import leets.land.validation.exception.InvalidInputException;
+import leets.land.v1.domain.Range;
+import leets.land.v1.validation.exception.InvalidInputException;
 
 public class NumberRangeConstraint implements Constraint<String> {
 
@@ -12,7 +12,7 @@ public class NumberRangeConstraint implements Constraint<String> {
     }
 
     @Override
-    public void isValid(String value) throws InvalidInputException {
+    public void checkValidation(String value) throws InvalidInputException {
         if(Integer.parseInt(range.getBottom()) > Integer.parseInt(value)     // 입력 값이 범위 사이에 존재하는가
                     || Integer.parseInt(value) > Integer.parseInt(range.getTop()))
             throw new InvalidInputException("[ERROR] 범위 내의 숫자를 입력하세요.");

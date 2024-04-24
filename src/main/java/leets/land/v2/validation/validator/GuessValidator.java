@@ -1,16 +1,16 @@
-package leets.land.validation.validator;
+package leets.land.v2.validation.validator;
 
-import leets.land.domain.Range;
-import leets.land.domain.Version;
-import leets.land.validation.constraint.*;
-import leets.land.validation.exception.InvalidInputException;
+import leets.land.v2.domain.Range;
+import leets.land.v2.domain.Version;
+import leets.land.v2.validation.constraint.*;
+import leets.land.v2.validation.exception.InvalidInputException;
 
 import java.util.List;
 
-import static leets.land.domain.Version.ENGLISH_VERSION;
-import static leets.land.domain.Version.NUMBER_VERSION;
+import static leets.land.v2.domain.Version.ENGLISH_VERSION;
+import static leets.land.v2.domain.Version.NUMBER_VERSION;
 
-public class TrialValidator {
+public class GuessValidator {
 
     private List<Constraint<String>> constraints;  // 다른 제약 조건이 생기면 추가
 
@@ -21,7 +21,7 @@ public class TrialValidator {
             constraints = List.of(new NumberTypeMismatchConstraint(), new NumberRangeConstraint(range));
 
         for (Constraint<String> constraint : constraints) {
-            constraint.isValid(value.toString());
+            constraint.checkValidation(value.toString());
         }
     }
 }

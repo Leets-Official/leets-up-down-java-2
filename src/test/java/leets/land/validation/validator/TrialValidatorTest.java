@@ -1,15 +1,16 @@
 package leets.land.validation.validator;
 
-import leets.land.domain.Range;
-import leets.land.domain.Version;
-import leets.land.validation.exception.InvalidInputException;
+import leets.land.v1.domain.Range;
+import leets.land.v1.domain.Version;
+import leets.land.v1.validation.exception.InvalidInputException;
+import leets.land.v1.validation.validator.TrialValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static leets.land.domain.Version.ENGLISH_VERSION;
-import static leets.land.domain.Version.NUMBER_VERSION;
+import static leets.land.v1.domain.Version.ENGLISH_VERSION;
+import static leets.land.v1.domain.Version.NUMBER_VERSION;
 
 class TrialValidatorTest {
 

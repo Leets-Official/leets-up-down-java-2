@@ -1,6 +1,6 @@
-package leets.land.validation.constraint;
+package leets.land.v1.validation.constraint;
 
-import leets.land.validation.exception.InvalidInputException;
+import leets.land.v1.validation.exception.InvalidInputException;
 
 import java.util.regex.Pattern;
 
@@ -13,10 +13,10 @@ public class InvalidVersionConstraint implements Constraint<String> {
      * 아니면 메서드 내부에서 regex로 한 줄 처리하더라도 내부적으로는 pattern 변수를 생성-삭제 하는 객체 생명주기가 존재해서 같을까요??
      */
 
-    Pattern pattern = Pattern.compile("^[12]$");
+    private final Pattern pattern = Pattern.compile("^[12]$");
 
     @Override
-    public void isValid(String value) throws InvalidInputException {
+    public void checkValidation(String value) throws InvalidInputException {
         if(!pattern.matcher(value).matches())   // 1, 2가 아닌 다른 값을 입력했는가
             throw new InvalidInputException("[ERROR] 존재하지 않는 버전입니다. 다시 입력해주세요: ");
     }
