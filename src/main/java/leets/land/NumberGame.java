@@ -1,5 +1,4 @@
 package leets.land;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

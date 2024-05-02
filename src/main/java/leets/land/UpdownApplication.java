@@ -1,5 +1,4 @@
 package leets.land;
-
 import java.util.Scanner;
 
 public class UpdownApplication {

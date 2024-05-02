@@ -1,5 +1,4 @@
 package leets.land;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,7 +18,7 @@ public class AlphabetGame {
 
     public void run() throws Exception {
         char answer = getRandomAlphabet();
-        int tryNum = 0;
+        int tryNum = 1;
         char min = 'A';
         char max = 'z';
 
