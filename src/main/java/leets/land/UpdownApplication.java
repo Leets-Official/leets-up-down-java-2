@@ -20,9 +20,9 @@ public class UpdownApplication {
 		int version;
 
 		while (true) {
+			Scanner sc = new Scanner(System.in);
 			try {
 				System.out.println("버전을 선택하세요 (1 또는 2): ");
-				Scanner sc = new Scanner(System.in);
 				version = Integer.parseInt(sc.nextLine());
 				if (version != 1 && version != 2) {
 					throw new Exception("[ERROR] 존재하지 않는 버전입니다.");
